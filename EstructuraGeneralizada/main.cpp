@@ -9,13 +9,22 @@
     @version 1.0 04/015
 */
 #include <iostream>
+#include <string>
+
 #include "TestImesh.h"
+#include "CAppUtils.h"
 
 using namespace std;
 
-int main()
+int main(int argc, char* argv[])
 {
-	app_utils.show_working_directory() ;
+	string file_tasks = CAppUtils::handle_params(argc, argv);
+	Sleep(15000);
+
+	return 0;
+
+	app_utils.get_working_directory();
+	Sleep(15000);
 
 	Imesh_Test_2D_Images();
 	//Imesh_Test_3D_Images();

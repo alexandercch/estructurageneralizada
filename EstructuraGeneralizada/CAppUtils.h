@@ -31,8 +31,10 @@ public:
 
     void begin_counter();
     void show_duration();
-    void show_working_directory();
-    static string int_to_str(int n);
+    static string get_working_directory(bool show);
+	static string handle_params(int argc, char* argv[]);
+	inline static bool file_exist(const std::string& name);
+	static string int_to_str(int n);
 	static void set_vector_name(string filename, vector<string>& file_name_vector);
 	static string get_file_name(string path);
 private:
@@ -46,7 +48,25 @@ string CAppUtils::get_file_name(string path) {
 	return path.substr(slash_pos + 1, path.size());
 }
 
+inline bool CAppUtils::file_exist(const std::string& name) {
+	ifstream f(name.c_str());
+	return f.good();
+}
 
+string CAppUtils::handle_params(int argc, char* argv[]) {
+	string task_file;
+	if (argc > 2) {
+		task_file = argv[1];
+		string path = get_working_directory() + task_file;
+		cout << "PATH --> " << path << endl;
+		if (file_exist(path)) return path;
+		exit(EXIT_FAILURE);
+	}
+	else {
+		cout << "NO FILE TASK PROVIDED!, PLEASE PROVIDE A TASKS FILE NAME AS COMMAND LINE ARGUMENT." << endl;
+		exit(EXIT_FAILURE);
+	}
+}
 
 void CAppUtils::set_vector_name(string filename, vector<string>& file_name_vector) {
 	int point_pos, layer_counter = 0;
@@ -80,21 +100,23 @@ void CAppUtils::show_duration()
 };
 
 
-void CAppUtils::show_working_directory()
+string CAppUtils::get_working_directory(bool show=true)
 {
     char cCurrentPath[FILENAME_MAX];
     if (!GetCurrentDir(cCurrentPath, sizeof(cCurrentPath)))
-        printf("error: %d", rand());
+        printf("CANT GET CURRENT WORKING DIRECTORY.\n");
     cCurrentPath[sizeof(cCurrentPath) - 1] = '\0'; /* not really required */
-    printf ("The current working directory is %s\n", cCurrentPath);
+	if(show)
+		printf("The current working directory is %s\n", cCurrentPath);
+	string current_working_directory(cCurrentPath);
+	return current_working_directory;
 };
 
 string CAppUtils::int_to_str(int n)
 {
-    char *buffer= new char[64];
-    sprintf(buffer,"%d", n );
-    string res;
-    res= buffer;
+    char *buffer = new char[64];
+    sprintf(buffer,"%d", n);
+    string res = buffer;
     delete[] buffer;
     return res;
 }
@@ -106,7 +128,5 @@ CAppUtils::CAppUtils()
 CAppUtils::~CAppUtils()
 {
 };
-
-
 
 #endif //CAPPUTILS_H
