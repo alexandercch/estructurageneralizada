@@ -135,6 +135,7 @@
     <ClInclude Include="CGraphMeshND.h" />
     <ClInclude Include="CGraphUtils.h" />
     <ClInclude Include="CImage.h" />
+    <ClInclude Include="CImeshUtils.h" />
     <ClInclude Include="CImg.h" />
     <ClInclude Include="CMeshRegion.h" />
     <ClInclude Include="CNode.h" />

@@ -1,5 +1,0 @@
-..\..\mesh_data\knee_mesh_tetra-data_image.vtk
-IMESH_SEGMENTATION_SCALAR_VTK
-15
-50
-4

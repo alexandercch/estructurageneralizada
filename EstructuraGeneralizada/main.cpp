@@ -19,12 +19,10 @@ using namespace std;
 int main(int argc, char* argv[])
 {
 	string file_tasks = CAppUtils::handle_params(argc, argv);
+	printf("file_task %&s", file_tasks);
+
 	Sleep(15000);
 
-	return 0;
-
-	app_utils.get_working_directory();
-	Sleep(15000);
 
 	Imesh_Test_2D_Images();
 	//Imesh_Test_3D_Images();

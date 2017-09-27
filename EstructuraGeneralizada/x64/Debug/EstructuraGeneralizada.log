@@ -1,10 +1,10 @@
-﻿Build started 22/09/2017 12:04:34 a. m..
+﻿Build started 26/09/2017 9:29:18 p. m..
      1>Project "D:\study\ucsp\seminario-tesis-vs\EstructuraGeneralizada\EstructuraGeneralizada\EstructuraGeneralizada.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc140.pdb" /Gd /TP /errorReport:prompt main.cpp
          main.cpp
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\capputils.h(43): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\capputils.h(54): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\capputils.h(48): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\capputils.h(76): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
      1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\ccolor.h(79): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
      1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\ccolor.h(80): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
      1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\ccolor.h(101): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
@@ -12,6 +12,9 @@
      1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\cimage.h(29): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
      1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\cimage.h(105): warning C4244: '=': conversion from 'double' to 'CImage::IType', possible loss of data
      1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\cimage.h(122): warning C4244: '=': conversion from 'double' to 'CImage::IType', possible loss of data
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\main.cpp(22): warning C4476: 'printf' : unknown type field character '&' in format specifier
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\main.cpp(22): warning C4474: 'printf' : too many arguments passed for format string
+         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\main.cpp(22): note: placeholders and their parameters expect 0 variadic arguments, but 1 were provided
      1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\cimg.h(17415): warning C4319: '~': zero extending 'unsigned long' to 'double' of greater size
          d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\cimg.h(17414): note: while compiling class template member function 'double cimg_library::CImg<float>::_cimg_math_parser::mp_bitwise_not(void)'
          d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\cimg.h(17812): note: see reference to function template instantiation 'double cimg_library::CImg<float>::_cimg_math_parser::mp_bitwise_not(void)' being compiled
@@ -247,4 +250,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:06.85
+Time Elapsed 00:00:06.88

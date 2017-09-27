@@ -1,5 +1,0 @@
-..\..\mesh_data\titcaca_graph.txt
-IMESH_SEGMENTATION
-3
-4
-4

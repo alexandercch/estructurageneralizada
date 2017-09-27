@@ -1,5 +1,0 @@
-..\..\3d_data\dragon\dra.pgm
-IMESH_SEGMENTATION
-3
-4
-4

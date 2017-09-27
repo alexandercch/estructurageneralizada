@@ -8,6 +8,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <stdio.h>  /* defines FILENAME_MAX */
+#include <stdexcept>
 
 //#ifdef WINDOWS
 #include <direct.h>
@@ -31,12 +32,14 @@ public:
 
     void begin_counter();
     void show_duration();
-    static string get_working_directory(bool show);
+    static string get_working_directory(bool show=false);
 	static string handle_params(int argc, char* argv[]);
 	inline static bool file_exist(const std::string& name);
 	static string int_to_str(int n);
 	static void set_vector_name(string filename, vector<string>& file_name_vector);
 	static string get_file_name(string path);
+	static void log(const std::string &text, const std::string &file_path = "EstructuraGeneralizada.log");
+
 private:
 };
 
@@ -55,16 +58,15 @@ inline bool CAppUtils::file_exist(const std::string& name) {
 
 string CAppUtils::handle_params(int argc, char* argv[]) {
 	string task_file;
-	if (argc > 2) {
+	if (argc >= 2) {
 		task_file = argv[1];
 		string path = get_working_directory() + task_file;
-		cout << "PATH --> " << path << endl;
+		cout << "path-->" << path << endl;
 		if (file_exist(path)) return path;
-		exit(EXIT_FAILURE);
+		throw invalid_argument("[handle_params] task file path does not exist.");
 	}
 	else {
-		cout << "NO FILE TASK PROVIDED!, PLEASE PROVIDE A TASKS FILE NAME AS COMMAND LINE ARGUMENT." << endl;
-		exit(EXIT_FAILURE);
+		throw invalid_argument("[handle_params] no task file path name was provided.");
 	}
 }
 
@@ -100,25 +102,30 @@ void CAppUtils::show_duration()
 };
 
 
-string CAppUtils::get_working_directory(bool show=true)
+string CAppUtils::get_working_directory(bool show)
 {
     char cCurrentPath[FILENAME_MAX];
     if (!GetCurrentDir(cCurrentPath, sizeof(cCurrentPath)))
         printf("CANT GET CURRENT WORKING DIRECTORY.\n");
     cCurrentPath[sizeof(cCurrentPath) - 1] = '\0'; /* not really required */
 	if(show)
-		printf("The current working directory is %s\n", cCurrentPath);
-	string current_working_directory(cCurrentPath);
-	return current_working_directory;
+		printf("WORKING DIRECTORY %s\n", cCurrentPath);	
+	return cCurrentPath;
 };
 
 string CAppUtils::int_to_str(int n)
 {
     char *buffer = new char[64];
-    sprintf(buffer,"%d", n);
+    sprintf(buffer, "%d", n);
     string res = buffer;
     delete[] buffer;
     return res;
+}
+
+void CAppUtils::log(const std::string &text, const std::string &file_path)
+{
+	ofstream log_file(file_path.c_str(), ios_base::out | ios_base::app);	
+	log_file << text << endl;
 }
 
 CAppUtils::CAppUtils()
