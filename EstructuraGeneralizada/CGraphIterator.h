@@ -9,7 +9,6 @@
 #ifndef CGRAPHITERATOR_H_INCLUDED
 #define CGRAPHITERATOR_H_INCLUDED
 
-template<class T>
 class CGraphIterator
 {
 public:
@@ -23,15 +22,13 @@ public:
     bool operator!=(CGraphIterator *iter);
     void operator++(int);
 };
-template<class T>
-CGraphIterator<T>::CGraphIterator()
-{
 
+CGraphIterator::CGraphIterator()
+{
 };
-template<class T>
-CGraphIterator<T>::~CGraphIterator()
-{
 
+CGraphIterator::~CGraphIterator()
+{
 };
 
 #endif // CGRAPHITERATOR_H_INCLUDED

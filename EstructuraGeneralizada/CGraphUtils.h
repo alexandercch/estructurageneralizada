@@ -7,7 +7,6 @@
 
 using namespace std;
 
-template<class T>
 class CGraphUtils
 {
 public:
@@ -15,29 +14,29 @@ public:
 	virtual ~CGraphUtils();
 
 	//images functions
-	void GraphToImage2D(CGraphImage2D<T> *graph, CImage *image);
-	void ImageToGraph2D(CGraphImage2D<T> *graph, CImage *image);
-	void GraphToImage3D(CGraphImage3D<T> *graph, CImage *image);
-	void ImageToGraph3D(CGraphImage3D<T> *graph, CImage *image);
+	void GraphToImage2D(CGraphImage2D *graph, CImage *image);
+	void ImageToGraph2D(CGraphImage2D *graph, CImage *image);
+	void GraphToImage3D(CGraphImage3D *graph, CImage *image);
+	void ImageToGraph3D(CGraphImage3D *graph, CImage *image);
 
 	//mesh functions (old functions, replaces by VTK...() fuctions )
-	void AdjacentListToMesh(CGraphMeshND<T> *graph, string filename);
-	void MeshToAdjacentList(CGraphMeshND<T> *graph, string filename);
+	void AdjacentListToMesh(CGraphMeshND *graph, string filename);
+	void MeshToAdjacentList(CGraphMeshND *graph, string filename);
 
 	//display images segmentation funtions
-	void LabeledGraphToImage2D(CGraphImage2D<T> *graph, CImage *image);
-	void LabeledGraphToImage3D(CGraphImage3D<T> *graph, CImage *image);
+	void LabeledGraphToImage2D(CGraphImage2D *graph, CImage *image);
+	void LabeledGraphToImage3D(CGraphImage3D *graph, CImage *image);
 
 	//display mesh segmentation funtions
-	void LabeledMeshToNDGraph(CGraphMeshND<T> *graph, string filename);
+	void LabeledMeshToNDGraph(CGraphMeshND *graph, string filename);
 
 	//display images segmentation funtions
-	void OverlapedGraphToImage2D(CGraphImage2D<T> *graph, vector<CMeshRegion<CGraphImage2D<T> >* > *p_mrv, CImage *image);
-	void OverlapedGraphToImage3D(CGraphImage3D<T> *graph, vector<CMeshRegion<CGraphImage3D<T> >* > *p_mrv, CImage *image);
+	void OverlapedGraphToImage2D(CGraphImage2D *graph, vector<CMeshRegion<CGraphImage2D>* > *p_mrv, CImage *image);
+	void OverlapedGraphToImage3D(CGraphImage3D *graph, vector<CMeshRegion<CGraphImage3D>* > *p_mrv, CImage *image);
 
 	//save segmentation result to file
-	void Overlaped3DGraphToFile(CGraphImage3D<T> *graph, vector<CMeshRegion<CGraphImage3D<T> >* > *p_mrv, string filename);
-	void OverlapedNDGraphToFile(CGraphMeshND<T> *graph, vector<CMeshRegion<CGraphMeshND<T> >* > *p_mrv, string filename);
+	void Overlaped3DGraphToFile(CGraphImage3D *graph, vector<CMeshRegion<CGraphImage3D>* > *p_mrv, string filename);
+	void OverlapedNDGraphToFile(CGraphMeshND *graph, vector<CMeshRegion<CGraphMeshND>* > *p_mrv, string filename);
 
 	//functions for translating segmentation to images/meshes
 	void Region_DFS2D(int v, int color);
@@ -46,11 +45,11 @@ public:
 
 	//new functions for handling vtk files directly, by dll
 	void VTKDisplayMesh(string filename);
-	void VTKGridToMesh(CGraphMeshND<T> *graph, string filename);
-	void LabeledMeshToVTKGrid(CGraphMeshND<T> *graph, string filename_source, string filename_output);
-	void OverlapedNDMeshToVTKGrid(CGraphMeshND<T> *graph, vector<CMeshRegion<CGraphMeshND<T> >* > *p_mrv, string filename_source, string filename_output);
+	void VTKGridToMesh(CGraphMeshND *graph, string filename);
+	void LabeledMeshToVTKGrid(CGraphMeshND *graph, string filename_source, string filename_output);
+	void OverlapedNDMeshToVTKGrid(CGraphMeshND *graph, vector<CMeshRegion<CGraphMeshND>* > *p_mrv, string filename_source, string filename_output);
 
-	void VTKMeshToGrid(CGraphMeshND<T> *graph, int **color, string filename_source, string filename_output);
+	void VTKMeshToGrid(CGraphMeshND *graph, int **color, string filename_source, string filename_output);
 
 	//get number of non overlaped regions 
 	template<class VR>int nnon_overlaped_regions(VR *vMeshRegion);
@@ -60,38 +59,35 @@ public:
 	CVTKViewer m_vtk;
 
 	map<int, int> m_label_color_map;
-	vector<CMeshRegion<CGraphImage2D<T> >* > *m_p_mrv2d;
-	vector<CMeshRegion<CGraphImage3D<T> >* > *m_p_mrv3d;
-	vector<CMeshRegion<CGraphMeshND<T> >* > *m_p_mrvnd;
+	vector<CMeshRegion<CGraphImage2D>* > *m_p_mrv2d;
+	vector<CMeshRegion<CGraphImage3D>* > *m_p_mrv3d;
+	vector<CMeshRegion<CGraphMeshND>* > *m_p_mrvnd;
 
-	void p(CGraphImage3D<T> *graph);
+	void p(CGraphImage3D *graph);
 	int *neighbors_per_cell;
 protected:
 private:
 };
 
-template<class T>
-CGraphUtils<T>::CGraphUtils()
+CGraphUtils::CGraphUtils()
 {
 	//ctor
 }
 
-template<class T>
-CGraphUtils<T>::~CGraphUtils()
+CGraphUtils::~CGraphUtils()
 {
 	//dtor
 }
 
-template<class T>//image must be already configured height x width
-void CGraphUtils<T>::GraphToImage2D(CGraphImage2D<T> *graph, CImage *image)
+//image must be already configured height x width
+void CGraphUtils::GraphToImage2D(CGraphImage2D *graph, CImage *image)
 {
 	for (int i = 0; i < image->m_height; ++i)
 		for (int j = 0; j < image->m_width; ++j)
 			image->set_pixel(i, j, (int)graph->m_labeled_matriz[i + 1][j + 1].m_data);
 }
 
-template<class T>
-void CGraphUtils<T>::ImageToGraph2D(CGraphImage2D<T> *graph, CImage *image)
+void CGraphUtils::ImageToGraph2D(CGraphImage2D *graph, CImage *image)
 {
 	graph->config(image->m_height + 2, image->m_width + 2);
 	for (int i = 0; i < graph->m_rows; ++i)
@@ -109,8 +105,8 @@ void CGraphUtils<T>::ImageToGraph2D(CGraphImage2D<T> *graph, CImage *image)
 			graph->m_labeled_matriz[i + 1][j + 1].m_data = image->get_pixel(i, j);
 }
 
-template<class T>//image must be already configured height x width
-void CGraphUtils<T>::GraphToImage3D(CGraphImage3D<T> *graph, CImage *image)
+//image must be already configured height x width
+void CGraphUtils::GraphToImage3D(CGraphImage3D *graph, CImage *image)
 {
 	for (int i = 0; i < image->m_height; ++i)
 		for (int j = 0; j < image->m_width; ++j)
@@ -118,8 +114,8 @@ void CGraphUtils<T>::GraphToImage3D(CGraphImage3D<T> *graph, CImage *image)
 				image->set_pixel(i, j, k, (int)graph->m_labeled_matriz[i + 1][j + 1][k + 1].m_data);
 }
 
-template<class T>
-void CGraphUtils<T>::ImageToGraph3D(CGraphImage3D<T> *graph, CImage *image)
+
+void CGraphUtils::ImageToGraph3D(CGraphImage3D *graph, CImage *image)
 {
 	graph->config(image->m_height + 2, image->m_width + 2, image->m_layers + 2);
 
@@ -166,8 +162,8 @@ void CGraphUtils<T>::ImageToGraph3D(CGraphImage3D<T> *graph, CImage *image)
 	cout << endl;
 }
 
-template<class T>
-void CGraphUtils<T>::AdjacentListToMesh(CGraphMeshND<T> *graph, string filename)
+
+void CGraphUtils::AdjacentListToMesh(CGraphMeshND *graph, string filename)
 {
 	ifstream in(filename.c_str());
 
@@ -198,8 +194,8 @@ void CGraphUtils<T>::AdjacentListToMesh(CGraphMeshND<T> *graph, string filename)
 	}
 }
 
-template<class T>
-void CGraphUtils<T>::MeshToAdjacentList(CGraphMeshND<T> *graph, string filename)
+
+void CGraphUtils::MeshToAdjacentList(CGraphMeshND *graph, string filename)
 {
 	ofstream out(filename.c_str());
 	out << graph->m_size << " " << graph->m_number_of_neighbors - 1 << endl;
@@ -225,8 +221,8 @@ void CGraphUtils<T>::MeshToAdjacentList(CGraphMeshND<T> *graph, string filename)
 	delete[] neighbors_per_cell;
 }
 
-template<class T>
-void CGraphUtils<T>::p(CGraphImage3D<T> *graph)
+
+void CGraphUtils::p(CGraphImage3D *graph)
 {
 	int n = 5;
 	graph->config(n + 2, n + 2, n + 2);
@@ -252,16 +248,16 @@ void CGraphUtils<T>::p(CGraphImage3D<T> *graph)
 	}
 }
 
-template<class T>//image must be already configured height x width
-void CGraphUtils<T>::LabeledGraphToImage2D(CGraphImage2D<T> *graph, CImage *image)
+//image must be already configured height x width
+void CGraphUtils::LabeledGraphToImage2D(CGraphImage2D *graph, CImage *image)
 {
 	for (int i = 0; i < image->m_height; ++i)
 		for (int j = 0; j < image->m_width; ++j)
 			image->set_pixel(i, j, color_pallete((int)graph->m_labeled_matriz[i + 1][j + 1].m_label));
 }
 
-template<class T>//image must be already configured height x width
-void CGraphUtils<T>::LabeledGraphToImage3D(CGraphImage3D<T> *graph, CImage *image)
+//image must be already configured height x width
+void CGraphUtils::LabeledGraphToImage3D(CGraphImage3D *graph, CImage *image)
 {
 	for (int i = 0; i < image->m_height; ++i)
 		for (int j = 0; j < image->m_width; ++j)
@@ -269,8 +265,8 @@ void CGraphUtils<T>::LabeledGraphToImage3D(CGraphImage3D<T> *graph, CImage *imag
 				image->set_pixel(i, j, k, color_pallete((int)graph->m_labeled_matriz[i + 1][j + 1][k + 1].m_label));
 }
 
-template<class T>//we dump the labeled mesh to the graph file
-void CGraphUtils<T>::LabeledMeshToNDGraph(CGraphMeshND<T> *graph, string filename) {
+//we dump the labeled mesh to the graph file
+void CGraphUtils::LabeledMeshToNDGraph(CGraphMeshND *graph, string filename) {
 	ofstream out(filename.c_str());
 	out << graph->m_size << " " << graph->m_number_of_neighbors - 1 << endl;
 	for (int i = 0; i < graph->m_size; ++i)
@@ -296,8 +292,8 @@ void CGraphUtils<T>::LabeledMeshToNDGraph(CGraphMeshND<T> *graph, string filenam
 }
 
 
-template<class T>//image must be already configured height x width
-void CGraphUtils<T>::Region_DFS2D(int v, int color)
+//image must be already configured height x width
+void CGraphUtils::Region_DFS2D(int v, int color)
 {
 	//cout<<"RDFS:"<<v<<"-"<<color<<endl;
 	m_label_color_map[(*m_p_mrv2d)[v]->m_label] = color;
@@ -307,8 +303,8 @@ void CGraphUtils<T>::Region_DFS2D(int v, int color)
 
 
 
-template<class T>//image must be already configured height x width
-void CGraphUtils<T>::OverlapedGraphToImage2D(CGraphImage2D<T> *graph, vector<CMeshRegion<CGraphImage2D<T> >* > *p_mrv, CImage *image)
+//image must be already configured height x width
+void CGraphUtils::OverlapedGraphToImage2D(CGraphImage2D *graph, vector<CMeshRegion<CGraphImage2D >* > *p_mrv, CImage *image)
 {
 	m_p_mrv2d = p_mrv;
 	int main_region_color;
@@ -329,8 +325,8 @@ void CGraphUtils<T>::OverlapedGraphToImage2D(CGraphImage2D<T> *graph, vector<CMe
 
 
 
-template<class T>//image must be already configured height x width
-void CGraphUtils<T>::Region_DFS3D(int v, int color)
+//image must be already configured height x width
+void CGraphUtils::Region_DFS3D(int v, int color)
 {
 	//cout<<"RDFS:"<<v<<"-"<<color<<endl;
 	m_label_color_map[(*m_p_mrv3d)[v]->m_label] = color;
@@ -339,8 +335,8 @@ void CGraphUtils<T>::Region_DFS3D(int v, int color)
 }
 
 
-template<class T>//image must be already configured height x width
-void CGraphUtils<T>::OverlapedGraphToImage3D(CGraphImage3D<T> *graph, vector<CMeshRegion<CGraphImage3D<T> >* > *p_mrv, CImage *image)
+//image must be already configured height x width
+void CGraphUtils::OverlapedGraphToImage3D(CGraphImage3D *graph, vector<CMeshRegion<CGraphImage3D >* > *p_mrv, CImage *image)
 {
 	m_p_mrv3d = p_mrv;
 	int main_region_color;
@@ -360,8 +356,8 @@ void CGraphUtils<T>::OverlapedGraphToImage3D(CGraphImage3D<T> *graph, vector<CMe
 				image->set_pixel(i, j, k, m_label_color_map[(int)graph->m_labeled_matriz[i][j][k].m_label]);
 }
 
-template<class T>//image must be already configured height x width
-void CGraphUtils<T>::Overlaped3DGraphToFile(CGraphImage3D<T> *graph, vector<CMeshRegion<CGraphImage3D<T> >* > *p_mrv, string filename)
+//image must be already configured height x width
+void CGraphUtils::Overlaped3DGraphToFile(CGraphImage3D *graph, vector<CMeshRegion<CGraphImage3D >* > *p_mrv, string filename)
 {
 	ofstream out(filename.c_str());
 	m_p_mrv3d = p_mrv;
@@ -393,8 +389,8 @@ void CGraphUtils<T>::Overlaped3DGraphToFile(CGraphImage3D<T> *graph, vector<CMes
 	out.close();
 }
 
-template<class T>//image must be already configured height x width
-void CGraphUtils<T>::Region_DFSND(int v, int color)
+//image must be already configured height x width
+void CGraphUtils::Region_DFSND(int v, int color)
 {
 	/*cout << "RDFS:" << v << "-";
 	printf("0x%x", color);
@@ -405,8 +401,8 @@ void CGraphUtils<T>::Region_DFSND(int v, int color)
 		Region_DFSND((*m_p_mrvnd)[v]->m_overlaped_mr_ids[i], color);
 }
 
-template<class T>//
-void CGraphUtils<T>::OverlapedNDGraphToFile(CGraphMeshND<T> *graph, vector<CMeshRegion<CGraphMeshND<T> >* > *p_mrv, string filename)
+//
+void CGraphUtils::OverlapedNDGraphToFile(CGraphMeshND *graph, vector<CMeshRegion<CGraphMeshND >* > *p_mrv, string filename)
 {
 	ofstream out(filename.c_str());
 	m_p_mrvnd = p_mrv;
@@ -446,16 +442,16 @@ void CGraphUtils<T>::OverlapedNDGraphToFile(CGraphMeshND<T> *graph, vector<CMesh
 	delete[] neighbors_per_cell;
 }
 
-template<class T>
-inline void CGraphUtils<T>::VTKDisplayMesh(string filename)
+
+inline void CGraphUtils::VTKDisplayMesh(string filename)
 {
 	cout << "displaying: " << filename << endl;
 	CVTKViewer c;
 	c.display_vtk_file(filename);
 }
 
-template<class T>
-inline void CGraphUtils<T>::VTKGridToMesh(CGraphMeshND<T>* graph, string filename)
+
+inline void CGraphUtils::VTKGridToMesh(CGraphMeshND* graph, string filename)
 {
 	int number_of_neighbors, size;
 	int *color;
@@ -464,7 +460,7 @@ inline void CGraphUtils<T>::VTKGridToMesh(CGraphMeshND<T>* graph, string filenam
 	m_vtk.set_graph_from_vtk_file(filename, &(graph->m_adj_list), &color, &area, &number_of_neighbors, &size);
 	graph->m_size = size;
 	graph->m_number_of_neighbors = number_of_neighbors;
-	graph->m_nodes = new CNode<T>[size + 1];
+	graph->m_nodes = new CNode[size + 1];
 	for (int i = 0; i < size; ++i) {
 		graph->m_nodes[i].m_data = color[i];
 		graph->m_nodes[i].m_area = area[i];
@@ -482,13 +478,13 @@ inline void CGraphUtils<T>::VTKGridToMesh(CGraphMeshND<T>* graph, string filenam
 
 }
 
-template<class T>
-inline void CGraphUtils<T>::LabeledMeshToVTKGrid(CGraphMeshND<T>* graph, string filename_source, string filename_output)
+
+inline void CGraphUtils::LabeledMeshToVTKGrid(CGraphMeshND* graph, string filename_source, string filename_output)
 {
 }
 
-template<class T>
-inline void CGraphUtils<T>::OverlapedNDMeshToVTKGrid(CGraphMeshND<T>* graph, vector<CMeshRegion<CGraphMeshND<T>>*>* p_mrv, string filename_source, string filename_output)
+
+inline void CGraphUtils::OverlapedNDMeshToVTKGrid(CGraphMeshND* graph, vector<CMeshRegion<CGraphMeshND>*>* p_mrv, string filename_source, string filename_output)
 {
 	int mesh_region_color = 0;
 	int *overlaped_regions_color = new int[graph->m_size];
@@ -538,16 +534,16 @@ inline void CGraphUtils<T>::OverlapedNDMeshToVTKGrid(CGraphMeshND<T>* graph, vec
 	}
 }
 
-template<class T>
-inline void CGraphUtils<T>::VTKMeshToGrid(CGraphMeshND<T>* graph, int **color, string filename_source, string filename_output)
+
+inline void CGraphUtils::VTKMeshToGrid(CGraphMeshND* graph, int **color, string filename_source, string filename_output)
 {
 	//m_vtk.check_colors(color, graph->m_size);
 	m_vtk.set_vtk_file_from_graph(filename_source, filename_output, color, graph->m_number_of_neighbors, graph->m_size);	
 }
 
-template<class T>
+
 template<class VR>
-int CGraphUtils<T>::nnon_overlaped_regions(VR *vMeshRegion) {
+int CGraphUtils::nnon_overlaped_regions(VR *vMeshRegion) {
 	int nregions = 0;
 	for (int i = 0; i < vMeshRegion->size(); ++i) {
 		if (!(*vMeshRegion)[i]->m_overlap)nregions++;

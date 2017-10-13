@@ -20,11 +20,10 @@
 using namespace std;
 
 //CGraph es la carcaza que pretendemos hacer
-template<class T>
 class CGraph
 {
 public:
-    typedef CNode<T> node;
+    typedef CNode node;
 
     //methods
     CGraph();
@@ -33,31 +32,29 @@ public:
     /**
         @return the total number of elements
     */
-    int weight();//number of nodes
+    virtual int weight() = 0;//number of nodes
 
     /**
         @return the total space used by the graph (i.e. area, volumen, etc)
     */
-    int area();//image area
+	virtual int area() = 0;//image area
 
     /**
         Read data from file
         @param filename path to the data file
     */
-    void load_data(string filename);
+	virtual void load_data(string filename) = 0;
 
 protected:
 private:
 };
 
-template<class T>
-CGraph<T>::CGraph()
+CGraph::CGraph()
 {
     //ctor
 }
 
-template<class T>
-CGraph<T>::~CGraph()
+CGraph::~CGraph()
 {
     //dtor
 }

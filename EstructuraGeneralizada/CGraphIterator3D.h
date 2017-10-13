@@ -10,6 +10,7 @@
 #ifndef CGRAPHITERATOR3D_H
 #define CGRAPHITERATOR3D_H
 
+#include "CGraph.h"
 #include "CGraphIterator.h"
 
 //this arrays are for the navigation through neigbours around a cell
@@ -21,15 +22,14 @@ int lay_step3d[6]= {-1, 0, 0, 0, 0, 1};
 #define CS3D col_step3d
 #define LS3D lay_step3d
 
-template<class T>
+
 class CGraphImage3D;
 
-template< class T>
-class CGraphIterator3D:public CGraphIterator<T>
+class CGraphIterator3D:public CGraphIterator
 {
 public:
-    typedef typename CGraphImage3D<T>::node node;
-    typedef CGraphIterator3D<T> self;
+    typedef CGraph::node node;
+    typedef CGraphIterator3D self;
 
 	//members
 	int m_current_row, m_prowbegin;
@@ -39,14 +39,14 @@ public:
 	int m_total_columns;
 	int m_total_layers;
 
-	CGraphImage3D<T> *m_pgraph;
+	CGraphImage3D *m_pgraph;
 
     //overloaded operators
-    void operator=(CGraphIterator3D<T> *iter);
-    void operator=(CGraphIterator3D<T> iter);
+    void operator=(CGraphIterator3D *iter);
+    void operator=(CGraphIterator3D iter);
     void operator++(int);
-    bool operator==(CGraphIterator3D<T> *iter);
-    bool operator!=(CGraphIterator3D<T> *iter);
+    bool operator==(CGraphIterator3D *iter);
+    bool operator!=(CGraphIterator3D *iter);
     node* operator->();
     node* operator*();
 
@@ -69,7 +69,7 @@ public:
         return the neighbor node at the position i
         @param i neighbor number, see CGraphImage3D::number of neighbors
     */
-    node* neighbor_node_at(int i);
+    //node* neighbor_node_at(int i);
 
     /**
         return the neighbor iterator at position i
@@ -81,18 +81,15 @@ protected:
 private:
 };
 
-template< class T>
-CGraphIterator3D<T>::CGraphIterator3D()
+CGraphIterator3D::CGraphIterator3D()
 {
 };
 
-template< class T>
-CGraphIterator3D<T>::~CGraphIterator3D()
+CGraphIterator3D::~CGraphIterator3D()
 {
 };
 
-template< class T>
-void CGraphIterator3D<T>::operator=(CGraphIterator3D<T> iter)
+void CGraphIterator3D::operator=(CGraphIterator3D iter)
 {
 	m_total_rows	= iter.m_total_rows;
 	m_total_columns = iter.m_total_columns;
@@ -105,8 +102,8 @@ void CGraphIterator3D<T>::operator=(CGraphIterator3D<T> iter)
 	m_prowbegin		= iter.m_current_row;
 	m_pgraph		= iter.m_pgraph;
 };
-template< class T>
-void CGraphIterator3D<T>::operator=(CGraphIterator3D<T> *iter)
+
+void CGraphIterator3D::operator=(CGraphIterator3D *iter)
 {
 	m_total_rows	= iter->m_total_rows;
 	m_total_columns = iter->m_total_columns;
@@ -120,22 +117,18 @@ void CGraphIterator3D<T>::operator=(CGraphIterator3D<T> *iter)
 	m_pgraph		= iter->m_pgraph;
 };
 
-template< class T>
-bool CGraphIterator3D<T>::operator==(CGraphIterator3D<T> *iter)
+bool CGraphIterator3D::operator==(CGraphIterator3D *iter)
 {
     return m_current_row == iter->m_current_row;// && m_pcol==iter->m_pcol;
 };
 
-template< class T>
-bool CGraphIterator3D<T>::operator!=(CGraphIterator3D<T> *iter)
+bool CGraphIterator3D::operator!=(CGraphIterator3D *iter)
 {
     return !(m_current_row == iter->m_current_row);// && m_pcol==iter->m_pcol);
 };
 
-template< class T>
-void CGraphIterator3D<T>::operator++(int)
-{
-    
+void CGraphIterator3D::operator++(int)
+{    
     //detect if current layer is in the final layer
     if( ++m_current_layer < m_total_layers)
         return;//if not go to next layer
@@ -149,27 +142,26 @@ void CGraphIterator3D<T>::operator++(int)
     }
 };
 
-template< class T>
-typename CGraphIterator3D<T>::node* CGraphIterator3D<T>::operator->()
+
+CGraphIterator3D::node* CGraphIterator3D::operator->()
 {
     return &(m_pgraph->m_labeled_matriz[m_current_row][m_current_column][m_current_layer]);
 };
 
-template< class T>
-typename CGraphIterator3D<T>::node* CGraphIterator3D<T>::operator*()
+CGraphIterator3D::node* CGraphIterator3D::operator*()
 {
 	return &(m_pgraph->m_labeled_matriz[m_current_row][m_current_column][m_current_layer]);
 };
 
-template< class T>
-typename CGraphIterator3D<T>::node* CGraphIterator3D<T>::neighbor_node_at(int i)
+///TODO fix width pointer distance (unfinished method)
+/*
+typename CGraphIterator3D::node* CGraphIterator3D::neighbor_node_at(int i)
 {
-    ///TODO fix width pointer distance
-    return ((*(m_prow + RS3D[i]) + CS3D[i]));
-};
+    
+    return &((m_current_row + RS3D[i]) + CS3D[i]);
+};*/
 
-template< class T>
-typename CGraphIterator3D<T>::self CGraphIterator3D<T>::neighbor_at(int i)
+CGraphIterator3D::self CGraphIterator3D::neighbor_at(int i)
 {
     self neighbor;
 
@@ -187,45 +179,32 @@ typename CGraphIterator3D<T>::self CGraphIterator3D<T>::neighbor_at(int i)
 };
 
 
-template<class T>
-inline int CGraphIterator3D<T>::getData()
+inline int CGraphIterator3D::getData()
 {
 	return  m_pgraph->get_pixel(m_current_row, m_current_column, m_current_layer);
 }
 
-template<class T>
-inline float CGraphIterator3D<T>::getArea()
+inline float CGraphIterator3D::getArea()
 {
 	return m_pgraph->m_labeled_matriz[m_current_row][m_current_column][m_current_layer].m_area;
 }
 
-template<class T>
-inline void CGraphIterator3D<T>::setData(int data)
+inline void CGraphIterator3D::setData(int data)
 {
 	m_pgraph->set_pixel(m_current_row, m_current_column, m_current_layer, data);
 }
 
-template<class T>
-inline bool CGraphIterator3D<T>::isInside()
+inline bool CGraphIterator3D::isInside()
 {
 	return	0 <= m_current_row && m_current_row < m_total_rows &&
 			0 <= m_current_column && m_current_column < m_total_columns &&
 			0 <= m_current_layer && m_current_layer < m_total_layers;
 }
 
-template<class T>
-inline void CGraphIterator3D<T>::print()
+inline void CGraphIterator3D::print()
 {
 	cout	<< m_current_row << " " << m_current_column << " " << m_current_layer << " - "
 			<< m_total_rows << " " << m_total_columns << " " << m_total_layers << endl;
 }
-
-
-
-
-
-
-
-
 
 #endif // CGRAPHITERATOR3D_H

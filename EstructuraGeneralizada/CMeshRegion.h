@@ -55,7 +55,6 @@ struct mr_cmp
 template<class G>
 CMeshRegion<G>::CMeshRegion():m_label(0), m_ncells(0), m_area(0.0), m_pattern(0.0),m_overlap(false)
 {
-
 }
 
 template<class G>
@@ -131,6 +130,5 @@ void CMeshRegion<G>::Init(int label, vector<CMeshRegion<G>*> *_m_pMeshRegionV)
 template<class G>
 CMeshRegion<G>::~CMeshRegion()
 {
-
 }
 #endif // CMESHREGION_H_INCLUDED

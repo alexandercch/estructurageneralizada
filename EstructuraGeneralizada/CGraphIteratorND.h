@@ -10,28 +10,28 @@
 #ifndef CGRAPHITERATORND_H_INCLUDED
 #define CGRAPHITERATORND_H_INCLUDED
 
+#include "CGraph.h"
 #include "CGraphIterator.h"
 
-template<class T>
+
 class CGraphMeshND;
 
-template< class T>
-class CGraphIteratorND:public CGraphIterator<T>
+class CGraphIteratorND:public CGraphIterator
 {
 public:
-    typedef typename CGraphMeshND<T>::node node;
-    typedef CGraphIteratorND<T> self;
+    typedef CGraph::node node;
+    typedef CGraphIteratorND self;
 
     //members
-    CGraphMeshND<T>* m_pgraph;
+    CGraphMeshND* m_pgraph;
     int m_index;
 
     //overloaded operators
-    void operator=(CGraphIteratorND<T> *iter);
-    void operator=(CGraphIteratorND<T> iter);
+    void operator=(CGraphIteratorND *iter);
+    void operator=(CGraphIteratorND iter);
     void operator++(int);
-    bool operator==(CGraphIteratorND<T> *iter);
-    bool operator!=(CGraphIteratorND<T> *iter);
+    bool operator==(CGraphIteratorND *iter);
+    bool operator!=(CGraphIteratorND *iter);
     node* operator->();
     node*& operator*();
 
@@ -66,95 +66,85 @@ protected:
 private:
 };
 
-template< class T>
-CGraphIteratorND<T>::CGraphIteratorND()
+
+CGraphIteratorND::CGraphIteratorND()
 {
 };
 
-template< class T>
-CGraphIteratorND<T>::~CGraphIteratorND()
+CGraphIteratorND::~CGraphIteratorND()
 {
 };
 
-template< class T>
-void CGraphIteratorND<T>::operator=(CGraphIteratorND<T> iter)
+void CGraphIteratorND::operator=(CGraphIteratorND iter)
 {
     m_pgraph    = iter.m_pgraph;
     m_index     = iter.m_index;
 };
-template< class T>
-void CGraphIteratorND<T>::operator=(CGraphIteratorND<T> *iter)
+
+void CGraphIteratorND::operator=(CGraphIteratorND *iter)
 {
     m_pgraph    = iter->m_pgraph;
     m_index     = iter->m_index;
 };
 
-template< class T>
-bool CGraphIteratorND<T>::operator==(CGraphIteratorND<T> *iter)
+bool CGraphIteratorND::operator==(CGraphIteratorND *iter)
 {
     return m_index == iter->m_index;// && m_pgraph=iter->m_pgraph;
 };
 
-template< class T>
-bool CGraphIteratorND<T>::operator!=(CGraphIteratorND<T> *iter)
+bool CGraphIteratorND::operator!=(CGraphIteratorND *iter)
 {
     return m_index != iter->m_index;// || m_pgraph!=iter->m_pgraph;
 };
 
-template< class T>
-void CGraphIteratorND<T>::operator++(int)
+void CGraphIteratorND::operator++(int)
 {
     m_index++;
 };
 
-template< class T>
-typename CGraphIteratorND<T>::node* CGraphIteratorND<T>::operator->()
+CGraphIteratorND::node* CGraphIteratorND::operator->()
 {
     return &m_pgraph->m_nodes[m_index];
 };
 
-template< class T>
-typename CGraphIteratorND<T>::node*& CGraphIteratorND<T>::operator*()
+CGraphIteratorND::node*& CGraphIteratorND::operator*()
 {
     node* p = &m_pgraph->m_nodes[m_index];
     return p;
 }
-template<class T>
-inline int CGraphIteratorND<T>::getData()
+
+inline int CGraphIteratorND::getData()
 {
 	return m_pgraph->m_nodes[m_index].m_data;
 }
-template<class T>
-inline void CGraphIteratorND<T>::setData(int data)
+
+inline void CGraphIteratorND::setData(int data)
 {
 	m_pgraph->m_nodes[iter.m_index].m_data = data;
 }
-template<class T>
-inline float CGraphIteratorND<T>::getArea()
+
+inline float CGraphIteratorND::getArea()
 {
 	return m_pgraph->m_nodes[m_index].m_area;
 }
-template<class T>
-inline bool CGraphIteratorND<T>::isInside()
+
+inline bool CGraphIteratorND::isInside()
 {
 	return  m_index < m_pgraph->m_size;
 }
-template<class T>
-inline void CGraphIteratorND<T>::print()
+
+inline void CGraphIteratorND::print()
 {
 	cout << m_index << endl;
 }
 
-
-template< class T>
-typename CGraphIteratorND<T>::node* CGraphIteratorND<T>::neighbor_node_at(int i)
+CGraphIteratorND::node* CGraphIteratorND::neighbor_node_at(int i)
 {
     ///TODO fix width pointer distance
     return &m_pgraph->m_nodes[m_pgraph->m_adj_list[m_index][i]];
 };
 
-template< class T>
-typename CGraphIteratorND<T>::self CGraphIteratorND<T>::neighbor_at(int i)
+CGraphIteratorND::self CGraphIteratorND::neighbor_at(int i)
 {
     self neighbor;
     neighbor.m_pgraph   = m_pgraph;

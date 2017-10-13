@@ -14,13 +14,12 @@
 #include "CGraph.h"
 #include "CGraphIteratorND.h"
 
-
-template<class T>
-class CGraphMeshND
+class CGraphMeshND : public CGraph
 {
 public:
-	typedef CGraphIteratorND<T> iterator;
-	typedef typename CGraph<T>::node node;
+	typedef CGraphIteratorND iterator;
+	typedef CGraph::node node;
+	typedef CGraph::node::NodeType NodeType;
 
 	//members
 	node *m_nodes;
@@ -69,7 +68,7 @@ public:
 		@param iter the iterator that point to the node
 		@param data the data to put in the place pointed by iter
 	*/
-	void set_at(iterator& iter, T& data);
+	void set_at(iterator& iter, NodeType& data);
 
 	/**
 		Copy all data from other graph, first sets to the new dimensions
@@ -85,7 +84,7 @@ private:
 	iterator *m_ibegin, *m_iend;
 };
 
-template<class T>CGraphMeshND<T>::CGraphMeshND() :
+CGraphMeshND::CGraphMeshND() :
 	m_ibegin(new iterator),
 	m_iend(new iterator),
 	m_size(0),
@@ -93,7 +92,7 @@ template<class T>CGraphMeshND<T>::CGraphMeshND() :
 {
 
 }
-template<class T>CGraphMeshND<T>::~CGraphMeshND()
+CGraphMeshND::~CGraphMeshND()
 {
 	cout << "m_size:" << m_size << " ";
 	cout << "~";
@@ -104,8 +103,8 @@ template<class T>CGraphMeshND<T>::~CGraphMeshND()
 	cout << "dtor" << endl;
 }
 
-template<class T>
-void CGraphMeshND<T>::config(int size, int dimension) //dimensio should be 2 or 3
+
+void CGraphMeshND::config(int size, int dimension) //dimensio should be 2 or 3
 {
 	m_size = size;
 	dimension++;
@@ -121,26 +120,26 @@ void CGraphMeshND<T>::config(int size, int dimension) //dimensio should be 2 or 
 	set_pointer_iterators();
 }
 
-template<class T>
-typename CGraphMeshND<T>::iterator* CGraphMeshND<T>::begin()
+
+CGraphMeshND::iterator* CGraphMeshND::begin()
 {
 	return m_ibegin;
 }
 
-template<class T>
-typename CGraphMeshND<T>::iterator* CGraphMeshND<T>::end()
+
+CGraphMeshND::iterator* CGraphMeshND::end()
 {
 	return m_iend;
 }
 
-template<class T>
-void CGraphMeshND<T>::set_at(iterator& iter, T& data)
+
+void CGraphMeshND::set_at(iterator& iter, NodeType& data)
 {
 	m_nodes[iter.m_index].m_data = data;
 }
 
-template<class T>
-void CGraphMeshND<T>::operator=(CGraphMeshND &_graph)
+
+void CGraphMeshND::operator=(CGraphMeshND &_graph)
 {
 	config(_graph.m_size, _graph.m_number_of_neighbors - 1);
 	for (int i = 0; i < _graph.m_size; ++i)
@@ -153,8 +152,8 @@ void CGraphMeshND<T>::operator=(CGraphMeshND &_graph)
 	}
 }
 
-template<class T>
-void CGraphMeshND<T>::load_data(string filename)
+
+void CGraphMeshND::load_data(string filename)
 {
 	ifstream in(filename.c_str());
 	int size, dimension, data, neighbor;
@@ -172,14 +171,14 @@ void CGraphMeshND<T>::load_data(string filename)
 	}
 }
 
-template<class T>
-int CGraphMeshND<T>::weight()
+
+int CGraphMeshND::weight()
 {
 	return m_size;
 }
 
-template<class T>
-int CGraphMeshND<T>::area()
+
+int CGraphMeshND::area()
 {
 	float tarea = 0.0;
 	for (int i = 0; i < m_size; ++i)
@@ -188,16 +187,16 @@ int CGraphMeshND<T>::area()
 }
 
 
-template<class T>
-void CGraphMeshND<T>::print_mesh()
+
+void CGraphMeshND::print_mesh()
 {
 	for (int i = 0; i < m_size; ++i)
 	{
 		cout << m_nodes[i].m_data << endl;
 	}
 }
-template<class T>
-inline void CGraphMeshND<T>::set_pointer_iterators()
+
+inline void CGraphMeshND::set_pointer_iterators()
 {
 	m_ibegin->m_pgraph = this;
 	m_ibegin->m_index = 0;

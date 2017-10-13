@@ -10,6 +10,8 @@
 #ifndef CGRAPHITERATOR2D_H_INCLUDED
 #define CGRAPHITERATOR2D_H_INCLUDED
 
+#include "CGraph.h"
+#include "CGraphImage2D.h"
 #include "CGraphIterator.h"
 
 //this arrays are for the navigation through neigbours around a cell
@@ -19,15 +21,14 @@ int col_step2d[4]= { 0, 1, 0,-1};
 #define RS2D row_step2d
 #define CS2D col_step2d
 
-template<class T>
+
 class CGraphImage2D;
 
-template< class T>
-class CGraphIterator2D:public CGraphIterator<T>
+class CGraphIterator2D:public CGraphIterator
 {
 public:
-    typedef typename CGraphImage2D<T>::node node;
-    typedef CGraphIterator2D<T> self;
+    typedef CGraph::node node;
+    typedef CGraphIterator2D self;
 
     //members
     int m_current_row, m_prowbegin;
@@ -35,14 +36,14 @@ public:
     int m_total_rows;
     int m_total_columns;
 
-	CGraphImage2D<T> *m_pgraph;
+	CGraphImage2D *m_pgraph;
 
     //overloaded operators
-    void operator=(CGraphIterator2D<T> *iter);
-    void operator=(CGraphIterator2D<T> iter);
+    void operator=(CGraphIterator2D *iter);
+    void operator=(CGraphIterator2D iter);
     void operator++(int);
-    bool operator==(CGraphIterator2D<T> *iter);
-    bool operator!=(CGraphIterator2D<T> *iter);
+    bool operator==(CGraphIterator2D *iter);
+    bool operator!=(CGraphIterator2D *iter);
     node* operator->();
     node* operator*();
 
@@ -64,7 +65,7 @@ public:
         return the neighbor node at the position i
         @param i neighbor number, see CGraphImage2D::number of neighbors
     */
-    node* neighbor_node_at(int i);
+    //node* neighbor_node_at(int i);
 
     /**
         return the neighbor iterator at position i
@@ -81,18 +82,18 @@ protected:
 private:
 };
 
-template< class T>
-CGraphIterator2D<T>::CGraphIterator2D()
+
+CGraphIterator2D::CGraphIterator2D()
 {
 };
 
-template< class T>
-CGraphIterator2D<T>::~CGraphIterator2D()
+
+CGraphIterator2D::~CGraphIterator2D()
 {
 };
 
-template< class T>
-void CGraphIterator2D<T>::operator=(CGraphIterator2D<T> iter)
+
+void CGraphIterator2D::operator=(CGraphIterator2D iter)
 {
     m_total_rows	= iter.m_total_rows;
     m_total_columns	= iter.m_total_columns;
@@ -104,8 +105,8 @@ void CGraphIterator2D<T>::operator=(CGraphIterator2D<T> iter)
 	m_pgraph		= iter.m_pgraph;
 };
 
-template< class T>
-void CGraphIterator2D<T>::operator=(CGraphIterator2D<T> *iter)
+
+void CGraphIterator2D::operator=(CGraphIterator2D *iter)
 {	
     m_total_rows	= iter->m_total_rows;
     m_total_columns = iter->m_total_columns;
@@ -117,21 +118,21 @@ void CGraphIterator2D<T>::operator=(CGraphIterator2D<T> *iter)
     m_prowbegin		= iter->m_current_row;	
 };
 
-template< class T>
-bool CGraphIterator2D<T>::operator==(CGraphIterator2D<T> *iter)
+
+bool CGraphIterator2D::operator==(CGraphIterator2D *iter)
 {
     return m_current_row == iter->m_current_row;
 };
 
-template< class T>
-bool CGraphIterator2D<T>::operator!=(CGraphIterator2D<T> *iter)
+
+bool CGraphIterator2D::operator!=(CGraphIterator2D *iter)
 {
 	return !(m_current_row == iter->m_current_row);
 };
 
 
-template< class T>
-void CGraphIterator2D<T>::operator++(int)
+
+void CGraphIterator2D::operator++(int)
 {
     //check column counter doesnot exceds the number of columns
     if( ++m_current_column < m_total_columns){
@@ -142,27 +143,29 @@ void CGraphIterator2D<T>::operator++(int)
     }
 };
 
-template< class T>
-typename CGraphIterator2D<T>::node* CGraphIterator2D<T>::operator->()
+
+CGraphIterator2D::node* CGraphIterator2D::operator->()
 {
     return &(m_pgraph->m_labeled_matriz[m_current_row][m_current_column]);
 };
 
-template< class T>
-typename CGraphIterator2D<T>::node* CGraphIterator2D<T>::operator*()
+
+CGraphIterator2D::node* CGraphIterator2D::operator*()
 {
 	return &m_pgraph->m_labeled_matriz[m_current_row][m_current_column];
 };
 
-template< class T>
-typename CGraphIterator2D<T>::node* CGraphIterator2D<T>::neighbor_node_at(int i)
+///TODO fix width pointer distance(unfinished method)
+/*
+typename CGraphIterator2D::node* CGraphIterator2D::neighbor_node_at(int i)
 {
     ///TODO fix width pointer distance
     return (*(m_current_row + RS2D[i]) + CS2D[i]);
 };
+*/
 
-template< class T>
-typename CGraphIterator2D<T>::self CGraphIterator2D<T>::neighbor_at(int i)
+
+CGraphIterator2D::self CGraphIterator2D::neighbor_at(int i)
 {
     self neighbor;    
 
@@ -177,33 +180,33 @@ typename CGraphIterator2D<T>::self CGraphIterator2D<T>::neighbor_at(int i)
     return neighbor;
 };
 
-template<class T>
-inline int CGraphIterator2D<T>::getData()
+
+int CGraphIterator2D::getData()
 {	
 	return  m_pgraph->get_pixel(m_current_row, m_current_column);
 }
 
-template<class T>
-inline float CGraphIterator2D<T>::getArea()
+
+float CGraphIterator2D::getArea()
 {
 	return m_pgraph->m_labeled_matriz[m_current_row][m_current_column].m_area;
 }
 
-template<class T>
-inline void CGraphIterator2D<T>::setData(int data)
+
+void CGraphIterator2D::setData(int data)
 {
 	m_pgraph->set_pixel(m_current_row, m_current_column, data);
 }
 
-template<class T>
-inline bool CGraphIterator2D<T>::isInside()
+
+inline bool CGraphIterator2D::isInside()
 {
 	return 0 <= m_current_row && m_current_row < m_total_rows && 0<= m_current_column && m_current_column < m_total_columns;
 }
 
 
-template<class T>
-inline void CGraphIterator2D<T>::print()
+
+inline void CGraphIterator2D::print()
 {
 	cout << m_current_row << " " << m_current_column << " - " << m_total_rows << " " << m_total_columns << endl;
 }

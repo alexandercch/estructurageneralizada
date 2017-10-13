@@ -15,13 +15,14 @@
 
 #define NUMBER_OF_NEIGHBOURS_3D 6
 
-template<class T>
-class CGraphImage3D
+
+class CGraphImage3D : public CGraph
 {
 public:
 	typedef unsigned char IType;
-	typedef CGraphIterator3D<T> iterator;
-	typedef typename CGraph<T>::node node;
+	typedef CGraphIterator3D iterator;
+	typedef CGraph::node node;
+	typedef CGraph::node::NodeType NodeType;
 
 	//members
 	node ***m_labeled_matriz;//this will hold the data
@@ -99,7 +100,7 @@ public:
 		@param iter the iterator that point to the node
 		@param data the data to put in the place pointed by iter
 	*/
-	void set_at(iterator& iter, T& data);
+	void set_at(iterator& iter, NodeType& data);
 
 	/**
 		Copy all data from other graph, first sets to the new dimensions
@@ -113,8 +114,8 @@ private:
 	iterator *m_ibegin, *m_iend;
 };
 
-template<class T>
-CGraphImage3D<T>::CGraphImage3D() :
+
+CGraphImage3D::CGraphImage3D() :
 	m_number_of_neighbors(NUMBER_OF_NEIGHBOURS_3D),
 	m_ibegin(new iterator),
 	m_iend(new iterator),
@@ -124,8 +125,7 @@ CGraphImage3D<T>::CGraphImage3D() :
 {
 }
 
-template<class T>
-CGraphImage3D <T>::~CGraphImage3D()
+CGraphImage3D ::~CGraphImage3D()
 {
 	//dtor
 	for (int i = 0; i < m_rows; ++i) {
@@ -136,8 +136,7 @@ CGraphImage3D <T>::~CGraphImage3D()
 	delete[] m_labeled_matriz;
 }
 
-template<class T>
-void CGraphImage3D <T>::config(int _rows, int _cols, int _lays)
+void CGraphImage3D ::config(int _rows, int _cols, int _lays)
 {
 	m_rows = _rows;
 	m_cols = _cols;
@@ -167,8 +166,7 @@ void CGraphImage3D <T>::config(int _rows, int _cols, int _lays)
 	//cout<<"success!"<<endl;
 }
 
-template<class T>
-inline void CGraphImage3D<T>::displayLabeledGraph()
+inline void CGraphImage3D::displayLabeledGraph()
 {
 	int middleImage = m_lays / 2;
 	CColor color;
@@ -181,28 +179,24 @@ inline void CGraphImage3D<T>::displayLabeledGraph()
 	img.display();
 }
 
-template<class T>
-inline void CGraphImage3D<T>::display()
+inline void CGraphImage3D::display()
 {
 	///we choose an intermediate layer	
 	///dont forget to erase it ;)
 	m_imagen[m_lays / 2]->display();
 }
 
-template<class T>
-typename CGraphImage3D<T>::iterator* CGraphImage3D<T>::begin()
+CGraphImage3D::iterator* CGraphImage3D::begin()
 {
 	return m_ibegin;
 }
 
-template<class T>
-typename CGraphImage3D<T>::iterator* CGraphImage3D<T>::end()
+CGraphImage3D::iterator* CGraphImage3D::end()
 {
 	return m_iend;
 }
 
-template<class T>
-void CGraphImage3D <T>::load_data(string filename)
+void CGraphImage3D ::load_data(string filename)
 {
 	vector<string> file_name_vector;
 	CAppUtils::set_vector_name(filename, file_name_vector);
@@ -224,8 +218,7 @@ void CGraphImage3D <T>::load_data(string filename)
 	config(m_rows, m_cols, m_lays);
 }
 
-template<class T>
-inline int CGraphImage3D<T>::get_pixel(int _row, int _col, int _lay)
+inline int CGraphImage3D::get_pixel(int _row, int _col, int _lay)
 {
 	return (int)(*m_imagen[_lay])(_col, _row, 0);
 	//we return this beacuse we are testing with one channel images
@@ -246,8 +239,7 @@ inline int CGraphImage3D<T>::get_pixel(int _row, int _col, int _lay)
 	return pixel;
 }
 
-template<class T>
-inline void CGraphImage3D<T>::set_pixel(int _row, int _col, int _lay, int pixel)
+inline void CGraphImage3D::set_pixel(int _row, int _col, int _lay, int pixel)
 {
 	unsigned char r, g, b;
 	r = (unsigned char)(pixel >> 16);
@@ -256,23 +248,19 @@ inline void CGraphImage3D<T>::set_pixel(int _row, int _col, int _lay, int pixel)
 	(*m_imagen[_lay])(_col, _row, 0) = r;
 	(*m_imagen[_lay])(_col, _row, 1) = g;
 	(*m_imagen[_lay])(_col, _row, 2) = b;
-
 }
 
-template<class T>
-int CGraphImage3D<T>::weight()
+int CGraphImage3D::weight()
 {
 	return m_rows*m_cols*m_lays;//number of elements
 }
 
-template<class T>
-int CGraphImage3D<T>::area()
+int CGraphImage3D::area()
 {
 	return m_rows*m_cols*m_lays; //number of area in pixels
 }
 
-template<class T>
-void CGraphImage3D<T>::operator=(CGraphImage3D <T> &_graph)
+void CGraphImage3D::operator=(CGraphImage3D  &_graph)
 {
 	config(_graph.m_rows, _graph.m_cols, _graph.m_lays);
 	for (int i = 0; i < m_rows; ++i)
@@ -281,10 +269,10 @@ void CGraphImage3D<T>::operator=(CGraphImage3D <T> &_graph)
 				m_labeled_matriz[i][j][k] = _graph.m_labeled_matriz[i][j][k];
 }
 
-template<class T>
-void CGraphImage3D<T>::set_at(iterator& iter, T& data)
+void CGraphImage3D::set_at(iterator& iter, NodeType& data)
 {
-	m_labeled_matriz[iter.m_row][iter.m_col][iter.m_lay].m_data = data;
+	///TODO check whether it can be resolved in this way, iter->m_data = data;
+	m_labeled_matriz[iter.m_current_row][iter.m_current_column][iter.m_current_layer].m_data = data;
 }
 
 #endif // CIMAGE3D_H

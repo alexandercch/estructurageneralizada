@@ -1,10 +1,10 @@
-﻿Build started 22/09/2017 6:03:16 p. m..
+﻿Build started 13/10/2017 16:12:02.
      1>Project "D:\study\ucsp\seminario-tesis-vs\EstructuraGeneralizada\EstructuraGeneralizada\EstructuraGeneralizada.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Release\\" /Fd"x64\Release\vc140.pdb" /Gd /TP /errorReport:prompt main.cpp
          main.cpp
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CAppUtils.h(45): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CAppUtils.h(77): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CAppUtils.h(48): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CAppUtils.h(76): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
      1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CColor.h(79): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
      1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CColor.h(80): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
      1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CColor.h(101): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
@@ -12,245 +12,75 @@
      1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImage.h(29): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
      1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImage.h(105): warning C4244: '=': conversion from 'double' to 'CImage::IType', possible loss of data
      1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImage.h(122): warning C4244: '=': conversion from 'double' to 'CImage::IType', possible loss of data
-     1>main.cpp(23): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'std::string'
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImg.h(17415): warning C4319: '~': zero extending 'unsigned long' to 'double' of greater size
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImg.h(17414): note: while compiling class template member function 'double cimg_library::CImg<float>::_cimg_math_parser::mp_bitwise_not(void)'
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImg.h(17812): note: see reference to function template instantiation 'double cimg_library::CImg<float>::_cimg_math_parser::mp_bitwise_not(void)' being compiled
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImg.h(19333): note: see reference to class template instantiation 'cimg_library::CImg<float>::_cimg_math_parser' being compiled
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImg.h(19329): note: while compiling class template member function 'double cimg_library::CImg<float>::eval(const char *const ,const double,const double,const double,const double) const'
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImg.h(58600): note: see reference to function template instantiation 'double cimg_library::CImg<float>::eval(const char *const ,const double,const double,const double,const double) const' being compiled
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImg.h(58599): note: see reference to class template instantiation 'cimg_library::CImg<float>' being compiled
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImg.h(20971): warning C4267: 'argument': conversion from 'size_t' to 'const unsigned int', possible loss of data
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImg.h(20969): note: while compiling class template member function 'cimg_library::CImg<char> cimg_library::CImg<char>::string(const char *const ,const bool)'
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImg.h(48670): note: see reference to function template instantiation 'cimg_library::CImg<char> cimg_library::CImg<char>::string(const char *const ,const bool)' being compiled
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImg.h(16731): note: see reference to class template instantiation 'cimg_library::CImg<char>' being compiled
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImg.h(23667): warning C4244: 'argument': conversion from '__int64' to 'const unsigned int', possible loss of data
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImg.h(23660): note: while compiling class template member function 'cimg_library::CImg<char> &cimg_library::CImg<char>::_system_strescape(void)'
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImg.h(48359): note: see reference to function template instantiation 'cimg_library::CImg<char> &cimg_library::CImg<char>::_system_strescape(void)' being compiled
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImg.h(23667): warning C4267: 'argument': conversion from 'size_t' to 'const unsigned int', possible loss of data
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImg.h(23668): warning C4244: 'argument': conversion from '__int64' to 'const unsigned int', possible loss of data
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImg.h(23668): warning C4267: 'argument': conversion from 'size_t' to 'const unsigned int', possible loss of data
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImg.h(23669): warning C4244: 'argument': conversion from '__int64' to 'const unsigned int', possible loss of data
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImg.h(23669): warning C4267: 'argument': conversion from 'size_t' to 'const unsigned int', possible loss of data
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImg.h(23670): warning C4244: 'argument': conversion from '__int64' to 'const unsigned int', possible loss of data
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImg.h(23670): warning C4267: 'argument': conversion from 'size_t' to 'const unsigned int', possible loss of data
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImg.h(23671): warning C4244: 'argument': conversion from '__int64' to 'const unsigned int', possible loss of data
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImg.h(23671): warning C4267: 'argument': conversion from 'size_t' to 'const unsigned int', possible loss of data
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImg.h(23673): warning C4244: 'argument': conversion from '__int64' to 'const unsigned int', possible loss of data
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphUtils.h(368): warning C4101: 'main_region_color': unreferenced local variable
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphUtils.h(365): note: while compiling class template member function 'void CGraphUtils<int>::Overlaped3DGraphToFile(CGraphImage3D<T> *,std::vector<CMeshRegion<CGraphImage3D<T>> *,std::allocator<_Ty>> *,std::string)'
-                 with
-                 [
-                     T=int,
-                     _Ty=CMeshRegion<CGraphImage3D<int>> *
-                 ]
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\TestImesh.h(144): note: see reference to function template instantiation 'void CGraphUtils<int>::Overlaped3DGraphToFile(CGraphImage3D<T> *,std::vector<CMeshRegion<CGraphImage3D<T>> *,std::allocator<_Ty>> *,std::string)' being compiled
-                 with
-                 [
-                     T=int,
-                     _Ty=CMeshRegion<CGraphImage3D<int>> *
-                 ]
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\TestImesh.h(25): note: see reference to class template instantiation 'CGraphUtils<int>' being compiled
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphUtils.h(470): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphUtils.h(459): note: while compiling class template member function 'void CGraphUtils<int>::VTKGridToMesh(CGraphMeshND<T> *,std::string)'
-                 with
-                 [
-                     T=int
-                 ]
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\TestImesh.h(157): note: see reference to function template instantiation 'void CGraphUtils<int>::VTKGridToMesh(CGraphMeshND<T> *,std::string)' being compiled
-                 with
-                 [
-                     T=int
-                 ]
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphImage3D.h(210): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphImage3D.h(206): note: while compiling class template member function 'void CGraphImage3D<T>::load_data(std::string)'
-                 with
-                 [
-                     T=int
-                 ]
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\TestImesh.h(100): note: see reference to function template instantiation 'void CGraphImage3D<T>::load_data(std::string)' being compiled
-                 with
-                 [
-                     T=int
-                 ]
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\TestImesh.h(83): note: see reference to class template instantiation 'CGraphImage3D<T>' being compiled
-                 with
-                 [
-                     T=int
-                 ]
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CSegmentator.h(209): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CSegmentator.h(182): note: while compiling class template member function 'void CSegmentator<CGraphImage2D<T>>::group_neighbor_regions(void)'
-                 with
-                 [
-                     T=int
-                 ]
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\TestImesh.h(65): note: see reference to function template instantiation 'void CSegmentator<CGraphImage2D<T>>::group_neighbor_regions(void)' being compiled
-                 with
-                 [
-                     T=int
-                 ]
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\TestImesh.h(31): note: see reference to class template instantiation 'CSegmentator<CGraphImage2D<T>>' being compiled
-                 with
-                 [
-                     T=int
-                 ]
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CSegmentator.h(214): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphMeshND.h(187): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphMeshND.h(183): note: while compiling class template member function 'int CGraphMeshND<T>::area(void)'
-                 with
-                 [
-                     T=int
-                 ]
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CSegmentator.h(112): note: see reference to function template instantiation 'int CGraphMeshND<T>::area(void)' being compiled
-                 with
-                 [
-                     T=int
-                 ]
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphUtils.h(171): note: while compiling class template member function 'void CGraphUtils<int>::AdjacentListToMesh(CGraphMeshND<T> *,std::string)'
-                 with
-                 [
-                     T=int
-                 ]
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\TestImesh.h(409): note: see reference to function template instantiation 'void CGraphUtils<int>::AdjacentListToMesh(CGraphMeshND<T> *,std::string)' being compiled
-                 with
-                 [
-                     T=int
-                 ]
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CMeshRegion.h(82): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CMeshRegion.h(78): note: while compiling class template member function 'void CMeshRegion<CGraphImage2D<T>>::Set_Distance(int,int)'
-                 with
-                 [
-                     T=int
-                 ]
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CSegmentator.h(175): note: see reference to function template instantiation 'void CMeshRegion<CGraphImage2D<T>>::Set_Distance(int,int)' being compiled
-                 with
-                 [
-                     T=int
-                 ]
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CMeshRegion.h(133): note: while compiling class template member function 'CMeshRegion<CGraphImage2D<T>>::~CMeshRegion(void)'
-                 with
-                 [
-                     T=int
-                 ]
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\TestImesh.h(69): note: see reference to class template instantiation 'CMeshRegion<CGraphImage2D<T>>' being compiled
-                 with
-                 [
-                     T=int
-                 ]
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\MinDistancesSet.h(87): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\MinDistancesSet.h(84): note: while compiling class template member function 'CMinDistancesSet<CMeshRegion<CGraphImage2D<T>>>::~CMinDistancesSet(void)'
-                 with
-                 [
-                     T=int
-                 ]
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CSegmentator.h(241): note: see reference to function template instantiation 'CMinDistancesSet<CMeshRegion<CGraphImage2D<T>>>::~CMinDistancesSet(void)' being compiled
-                 with
-                 [
-                     T=int
-                 ]
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CSegmentator.h(241): note: see reference to class template instantiation 'CMinDistancesSet<CMeshRegion<CGraphImage2D<T>>>' being compiled
-                 with
-                 [
-                     T=int
-                 ]
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CSegmentator.h(239): note: while compiling class template member function 'void CSegmentator<CGraphImage2D<T>>::group_similar_regions(void)'
-                 with
-                 [
-                     T=int
-                 ]
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\TestImesh.h(74): note: see reference to function template instantiation 'void CSegmentator<CGraphImage2D<T>>::group_similar_regions(void)' being compiled
-                 with
-                 [
-                     T=int
-                 ]
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\MinDistancesSet.h(104): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\MinDistancesSet.h(102): note: while compiling class template member function 'void CMinDistancesSet<CMeshRegion<CGraphImage2D<T>>>::Init(std::vector<CMeshRegion<CGraphImage2D<T>> *,std::allocator<_Ty>> *)'
-                 with
-                 [
-                     T=int,
-                     _Ty=CMeshRegion<CGraphImage2D<int>> *
-                 ]
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CSegmentator.h(249): note: see reference to function template instantiation 'void CMinDistancesSet<CMeshRegion<CGraphImage2D<T>>>::Init(std::vector<CMeshRegion<CGraphImage2D<T>> *,std::allocator<_Ty>> *)' being compiled
-                 with
-                 [
-                     T=int,
-                     _Ty=CMeshRegion<CGraphImage2D<int>> *
-                 ]
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\MinDistancesSet.h(152): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\MinDistancesSet.h(143): note: while compiling class template member function 'int CMinDistancesSet<CMeshRegion<CGraphImage2D<T>>>::UpdtLessDistPair(void)'
-                 with
-                 [
-                     T=int
-                 ]
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CSegmentator.h(255): note: see reference to function template instantiation 'int CMinDistancesSet<CMeshRegion<CGraphImage2D<T>>>::UpdtLessDistPair(void)' being compiled
-                 with
-                 [
-                     T=int
-                 ]
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphImage3D.h(233): warning C4101: 'b': unreferenced local variable
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphImage3D.h(229): note: while compiling class template member function 'int CGraphImage3D<T>::get_pixel(int,int,int)'
-                 with
-                 [
-                     T=int
-                 ]
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(193): note: see reference to function template instantiation 'int CGraphImage3D<T>::get_pixel(int,int,int)' being compiled
-                 with
-                 [
-                     T=int
-                 ]
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphImage3D.h(264): note: while compiling class template member function 'int CGraphImage3D<T>::weight(void)'
-                 with
-                 [
-                     T=int
-                 ]
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CSegmentator.h(113): note: see reference to function template instantiation 'int CGraphImage3D<T>::weight(void)' being compiled
-                 with
-                 [
-                     T=int
-                 ]
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphImage3D.h(117): note: while compiling class template member function 'CGraphImage3D<T>::CGraphImage3D(void)'
-                 with
-                 [
-                     T=int
-                 ]
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\TestImesh.h(96): note: see reference to function template instantiation 'CGraphImage3D<T>::CGraphImage3D(void)' being compiled
-                 with
-                 [
-                     T=int
-                 ]
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphImage3D.h(233): warning C4101: 'g': unreferenced local variable
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\MinDistancesSet.h(205): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\MinDistancesSet.h(194): note: while compiling class template member function 'void CMinDistancesSet<CMeshRegion<CGraphImage2D<T>>>::Erase(int,int)'
-                 with
-                 [
-                     T=int
-                 ]
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\MinDistancesSet.h(92): note: see reference to function template instantiation 'void CMinDistancesSet<CMeshRegion<CGraphImage2D<T>>>::Erase(int,int)' being compiled
-                 with
-                 [
-                     T=int
-                 ]
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\MinDistancesSet.h(76): note: while compiling class template member function 'CMinDistancesSet<CMeshRegion<CGraphImage2D<T>>>::CMinDistancesSet(void)'
-                 with
-                 [
-                     T=int
-                 ]
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CSegmentator.h(241): note: see reference to function template instantiation 'CMinDistancesSet<CMeshRegion<CGraphImage2D<T>>>::CMinDistancesSet(void)' being compiled
-                 with
-                 [
-                     T=int
-                 ]
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\MinDistancesSet.h(207): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"D:\study\ucsp\seminario-tesis-vs\EstructuraGeneralizada\x64\Release\EstructuraGeneralizada.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib ReadUnstructuredGrid.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"D:\study\ucsp\seminario-tesis-vs\EstructuraGeneralizada\x64\Release\EstructuraGeneralizada.pdb" /OPT:REF /OPT:ICF /LTCG:incremental /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\study\ucsp\seminario-tesis-vs\EstructuraGeneralizada\x64\Release\EstructuraGeneralizada.lib" /MACHINE:X64 x64\Release\main.obj
-         Generating code
-         51 of 2123 functions ( 2.4%) were compiled, the rest were copied from previous compilation.
-           0 functions were new in current compilation
-           16 functions had inline decision re-evaluated but remain unchanged
-         Finished generating code
-         EstructuraGeneralizada.vcxproj -> D:\study\ucsp\seminario-tesis-vs\EstructuraGeneralizada\x64\Release\EstructuraGeneralizada.exe
-     1>Done Building Project "D:\study\ucsp\seminario-tesis-vs\EstructuraGeneralizada\EstructuraGeneralizada\EstructuraGeneralizada.vcxproj" (Build target(s)).
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(148): error C2027: use of undefined type 'CGraphImage3D'
+         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(26): note: see declaration of 'CGraphImage3D'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(148): error C2227: left of '->m_labeled_matriz' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(153): error C2027: use of undefined type 'CGraphImage3D'
+         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(26): note: see declaration of 'CGraphImage3D'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(153): error C2227: left of '->m_labeled_matriz' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(184): error C2027: use of undefined type 'CGraphImage3D'
+         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(26): note: see declaration of 'CGraphImage3D'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(184): error C2227: left of '->get_pixel' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(189): error C2027: use of undefined type 'CGraphImage3D'
+         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(26): note: see declaration of 'CGraphImage3D'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(189): error C2227: left of '->m_labeled_matriz' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(189): error C2228: left of '.m_area' must have class/struct/union
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(194): error C2027: use of undefined type 'CGraphImage3D'
+         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(26): note: see declaration of 'CGraphImage3D'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(194): error C2227: left of '->set_pixel' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphImage3D.h(204): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(149): error C2027: use of undefined type 'CGraphImage2D'
+         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(25): note: see declaration of 'CGraphImage2D'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(149): error C2227: left of '->m_labeled_matriz' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(155): error C2027: use of undefined type 'CGraphImage2D'
+         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(25): note: see declaration of 'CGraphImage2D'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(155): error C2227: left of '->m_labeled_matriz' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(186): error C2027: use of undefined type 'CGraphImage2D'
+         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(25): note: see declaration of 'CGraphImage2D'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(186): error C2227: left of '->get_pixel' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(192): error C2027: use of undefined type 'CGraphImage2D'
+         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(25): note: see declaration of 'CGraphImage2D'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(192): error C2227: left of '->m_labeled_matriz' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(192): error C2228: left of '.m_area' must have class/struct/union
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(198): error C2027: use of undefined type 'CGraphImage2D'
+         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(25): note: see declaration of 'CGraphImage2D'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(198): error C2227: left of '->set_pixel' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(107): error C2027: use of undefined type 'CGraphMeshND'
+         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(17): note: see declaration of 'CGraphMeshND'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(107): error C2227: left of '->m_nodes' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(112): error C2027: use of undefined type 'CGraphMeshND'
+         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(17): note: see declaration of 'CGraphMeshND'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(112): error C2227: left of '->m_nodes' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(118): error C2027: use of undefined type 'CGraphMeshND'
+         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(17): note: see declaration of 'CGraphMeshND'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(118): error C2227: left of '->m_nodes' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(118): error C2228: left of '.m_data' must have class/struct/union
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(123): error C2027: use of undefined type 'CGraphMeshND'
+         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(17): note: see declaration of 'CGraphMeshND'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(123): error C2227: left of '->m_nodes' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(123): error C2065: 'iter': undeclared identifier
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(123): error C2228: left of '.m_index' must have class/struct/union
+         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(123): note: type is 'unknown-type'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(123): error C2228: left of '.m_data' must have class/struct/union
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(128): error C2027: use of undefined type 'CGraphMeshND'
+         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(17): note: see declaration of 'CGraphMeshND'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(128): error C2227: left of '->m_nodes' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(128): error C2228: left of '.m_area' must have class/struct/union
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(133): error C2027: use of undefined type 'CGraphMeshND'
+         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(17): note: see declaration of 'CGraphMeshND'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(133): error C2227: left of '->m_size' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(144): error C2027: use of undefined type 'CGraphMeshND'
+         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(17): note: see declaration of 'CGraphMeshND'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(144): error C2227: left of '->m_nodes' must point to class/struct/union/generic type
+         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(17): note: see declaration of 'CGraphMeshND'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(144): error C2227: left of '->m_adj_list' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(151): error C2027: use of undefined type 'CGraphMeshND'
+         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(17): note: see declaration of 'CGraphMeshND'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(151): error C2227: left of '->m_adj_list' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphMeshND.h(186): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphUtils.h(466): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+     1>Done Building Project "D:\study\ucsp\seminario-tesis-vs\EstructuraGeneralizada\EstructuraGeneralizada\EstructuraGeneralizada.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:04.63
+Time Elapsed 00:00:01.61

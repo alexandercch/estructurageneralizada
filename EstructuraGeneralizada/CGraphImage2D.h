@@ -14,13 +14,14 @@
 
 #define NUMBER_OF_NEIGHBOURS_2D 4
 
-template<class T>
-class CGraphImage2D
+
+class CGraphImage2D : public CGraph
 {
 public:
 	typedef unsigned char IType;
-    typedef CGraphIterator2D<T> iterator;
-    typedef typename CGraph<T>::node node;
+    typedef CGraphIterator2D iterator;
+    typedef CGraph::node node;
+	typedef CGraph::node::NodeType NodeType;
 
     //members
     node **m_labeled_matriz;//this will hold the segmented data
@@ -97,7 +98,7 @@ public:
         @param iter the iterator that point to the node
         @param data the data to put in the place pointed by iter
     */
-    void set_at(iterator& iter, T& data);
+    void set_at(iterator& iter, NodeType& data);
 
     /**
         Copy all data from other graph, first sets to the new dimensions
@@ -112,8 +113,8 @@ private:
     //end pointer
 };
 
-template<class T>
-CGraphImage2D<T>::CGraphImage2D ():
+
+CGraphImage2D::CGraphImage2D ():
 m_number_of_neighbors(NUMBER_OF_NEIGHBOURS_2D),
 m_ibegin(new iterator),
 m_iend(new iterator),
@@ -122,8 +123,8 @@ m_cols(0)
 {
 }
 
-template<class T>
-CGraphImage2D <T>::~CGraphImage2D ()
+
+CGraphImage2D ::~CGraphImage2D ()
 {
     //dtor
     for(int i = 0; i < m_rows; ++i)
@@ -131,8 +132,8 @@ CGraphImage2D <T>::~CGraphImage2D ()
     delete[] m_labeled_matriz;
 }
 
-template<class T>
-void CGraphImage2D <T>::config(int _rows, int _cols)
+
+void CGraphImage2D ::config(int _rows, int _cols)
 {
 	m_labeled_matriz = new node*[_rows];
 	for (int i = 0; i < _rows; ++i)
@@ -153,20 +154,20 @@ void CGraphImage2D <T>::config(int _rows, int _cols)
     //cout<<"success!"<<endl;
 }
 
-template<class T>
-typename CGraphImage2D<T>::iterator* CGraphImage2D<T>::begin()
+
+CGraphImage2D::iterator* CGraphImage2D::begin()
 {
     return m_ibegin;
 }
 
-template<class T>
-typename CGraphImage2D<T>::iterator* CGraphImage2D<T>::end()
+
+CGraphImage2D::iterator* CGraphImage2D::end()
 {
     return m_iend;
 }
 
-template<class T>
-void CGraphImage2D <T>::load_data(string filename)
+
+void CGraphImage2D ::load_data(string filename)
 {
 	m_imagen = new CImg<IType>(filename.c_str());
 	m_rows = m_imagen->height();
@@ -176,20 +177,20 @@ void CGraphImage2D <T>::load_data(string filename)
 	config(m_rows, m_cols);
 }
 
-template<class T>
-int CGraphImage2D<T>::weight()
+
+int CGraphImage2D::weight()
 {
     return m_rows*m_cols; //number of elements
 }
 
-template<class T>
-int CGraphImage2D<T>::area()
+
+int CGraphImage2D::area()
 {
     return m_rows*m_cols; //number of area in pixels
 }
 
-template<class T>
-void CGraphImage2D<T>::operator=(CGraphImage2D <T> &_graph)
+
+void CGraphImage2D::operator=(CGraphImage2D  &_graph)
 {
     config(_graph.m_rows, _graph.m_cols);//config reset/set size of the matrix
     for(int i=0; i< m_rows; ++i)
@@ -197,14 +198,14 @@ void CGraphImage2D<T>::operator=(CGraphImage2D <T> &_graph)
             m_labeled_matriz[i][j] = _graph.m_labeled_matriz[i][j];
 }
 
-template<class T>
-void CGraphImage2D<T>::set_at(iterator& iter, T& data)
+
+void CGraphImage2D::set_at(iterator& iter, NodeType& data)
 {    
     iter->m_data = data;
 }
 
-template<class T>
-int CGraphImage2D<T>::get_pixel(int _row, int _col)
+
+int CGraphImage2D::get_pixel(int _row, int _col)
 {	
 	int r, g, b;
 	int pixel = 0;
@@ -219,8 +220,8 @@ int CGraphImage2D<T>::get_pixel(int _row, int _col)
 	return pixel;
 }
 
-template<class T>
-void CGraphImage2D<T>::set_pixel(int _row, int _col, int pixel)
+
+void CGraphImage2D::set_pixel(int _row, int _col, int pixel)
 {
 	unsigned char r, g, b;
 	r = (unsigned char)(pixel >> 16);
@@ -231,8 +232,8 @@ void CGraphImage2D<T>::set_pixel(int _row, int _col, int pixel)
 	(*m_imagen)(_col, _row, 2 * m_nchannels) = b;
 }
 
-template<class T>
-inline void CGraphImage2D<T>::displayLabeledGraph()
+
+inline void CGraphImage2D::displayLabeledGraph()
 {
 	CColor color;
 	CImage img(m_cols, m_rows);
@@ -244,8 +245,8 @@ inline void CGraphImage2D<T>::displayLabeledGraph()
 	img.display();
 }
 
-template<class T>
-void CGraphImage2D<T>::display()
+
+void CGraphImage2D::display()
 {
 	m_imagen->display();
 }

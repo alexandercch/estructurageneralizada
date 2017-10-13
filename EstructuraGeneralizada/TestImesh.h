@@ -22,13 +22,13 @@ int nmeshes_asms;
 
 //helper objects
 CAppUtils app_utils; //to take time
-CGraphUtils<int> graph_utils; //handle images to graph convertions
+CGraphUtils graph_utils; //handle images to graph convertions
 
 
 void do_binary_segmentation_process() {
-	CGraphImage2D<int> in;
+	CGraphImage2D in;
 	in.load_data(PATH_DATA_DIRECTORY + image_file);
-	CSegmentator<CGraphImage2D<int> > seg(&in);
+	CSegmentator<CGraphImage2D > seg(&in);
 
 	cout << "Begin binary proccess." << endl;
 	app_utils.begin_counter();
@@ -41,10 +41,10 @@ void do_binary_segmentation_process() {
 
 void do_imesh_segmentation_process()
 {
-	CGraphImage2D<int> in;
+	CGraphImage2D in;
 	in.load_data(PATH_DATA_DIRECTORY + image_file);
 
-	CSegmentator<CGraphImage2D<int> > seg(&in);
+	CSegmentator<CGraphImage2D > seg(&in);
 
 	cout << "Begin imesh process." << endl;
 	cout << "Segmentation Difference: " << segmentation_difference << endl;
@@ -78,7 +78,7 @@ void do_imesh_segmentation_process()
 	imagen.display();
 }
 
-void dump_labeled_graph(CGraphImage3D<int>* graph, string filename) {
+void dump_labeled_graph(CGraphImage3D* graph, string filename) {
 	ofstream out(filename.c_str());
 	for (int k = 0; k < graph->m_lays; ++k) {
 		for (int i = 0; i < graph->m_rows; ++i) {
@@ -93,7 +93,7 @@ void dump_labeled_graph(CGraphImage3D<int>* graph, string filename) {
 
 void do_imesh_segmentation_process_3d()
 {
-	CGraphImage3D<int> in;
+	CGraphImage3D in;
 	//reading files!
 	cout << "reading files!" << endl;
 	app_utils.begin_counter();
@@ -102,7 +102,7 @@ void do_imesh_segmentation_process_3d()
 
 	cout << endl << "setting up graph!" << endl;
 	app_utils.begin_counter();
-	CSegmentator<CGraphImage3D<int> > seg(&in);
+	CSegmentator<CGraphImage3D > seg(&in);
 	app_utils.show_duration();
 
 	cout << endl << "Begin imesh process." << endl;
@@ -150,7 +150,7 @@ void do_imesh_segmentation_process_vtk_nd()//new reading method
 	//display vtk file
 	graph_utils.VTKDisplayMesh(PATH_DATA_DIRECTORY + image_file);
 
-	CGraphMeshND<int> in;
+	CGraphMeshND in;
 	//reading files!
 	cout << "reading files!" << endl;
 	app_utils.begin_counter();
@@ -159,7 +159,7 @@ void do_imesh_segmentation_process_vtk_nd()//new reading method
 	cout << endl << "setting up graph!" << endl;
 
 	app_utils.begin_counter();
-	CSegmentator<CGraphMeshND<int> > seg(&in);
+	CSegmentator<CGraphMeshND > seg(&in);
 	app_utils.show_duration();
 
 	cout << endl << "Begin imesh process." << endl;
@@ -211,7 +211,7 @@ void do_imesh_segmentation_process_scalar_vtk_nd()//new reading method
 	//display vtk file
 	graph_utils.VTKDisplayMesh(PATH_DATA_DIRECTORY + image_file);
 
-	CGraphMeshND<int> in;
+	CGraphMeshND in;
 	int nregions;
 	//reading files!
 	cout << "reading files!" << endl;
@@ -221,7 +221,7 @@ void do_imesh_segmentation_process_scalar_vtk_nd()//new reading method
 	cout << endl << "setting up graph!" << endl;
 
 	app_utils.begin_counter();
-	CSegmentator<CGraphMeshND<int> > seg(&in);
+	CSegmentator<CGraphMeshND > seg(&in);
 	app_utils.show_duration();
 
 	cout << endl << "Begin imesh process." << endl;
@@ -242,7 +242,7 @@ void do_imesh_segmentation_process_scalar_vtk_nd()//new reading method
 	seg.group_neighbor_regions();
 	app_utils.show_duration();	
 
-	nregions = graph_utils.nnon_overlaped_regions<vector< CMeshRegion<CGraphMeshND<int> >* > >(&(seg.m_meshregionV));
+	nregions = graph_utils.nnon_overlaped_regions<vector< CMeshRegion<CGraphMeshND >* > >(&(seg.m_meshregionV));
 	cout << "Non Overlaped Regions : " << nregions << endl << endl;
 
 
@@ -250,7 +250,7 @@ void do_imesh_segmentation_process_scalar_vtk_nd()//new reading method
 	app_utils.begin_counter();
 	seg.group_similar_regions();
 	app_utils.show_duration();
-	nregions = graph_utils.nnon_overlaped_regions<vector< CMeshRegion<CGraphMeshND<int> >* > >(&(seg.m_meshregionV));
+	nregions = graph_utils.nnon_overlaped_regions<vector< CMeshRegion<CGraphMeshND >* > >(&(seg.m_meshregionV));
 	cout << "Non Overlaped Regions : " << nregions << endl << endl;
 
 	string result_file = CAppUtils::get_file_name(image_file) + ".proceced.vtu";
@@ -402,7 +402,7 @@ int Imesh_Test_ND_Meshes()
 void do_imesh_segmentation_process_nd()//old reading method
 {	
 	graph_utils.VTKDisplayMesh(PATH_DATA_DIRECTORY + image_file);
-	CGraphMeshND<int> in;
+	CGraphMeshND in;
 	//reading files!
 	cout << "reading files!" << endl;
 	app_utils.begin_counter();
@@ -411,7 +411,7 @@ void do_imesh_segmentation_process_nd()//old reading method
 	cout << endl << "setting up graph!" << endl;
 
 	app_utils.begin_counter();
-	CSegmentator<CGraphMeshND<int> > seg(&in);
+	CSegmentator<CGraphMeshND > seg(&in);
 	app_utils.show_duration();
 
 	cout << endl << "Begin imesh process." << endl;
@@ -461,13 +461,13 @@ void do_ag2()
 	//imagen.display();
 
 
-	CGraphImage2D<int> in;
+	CGraphImage2D in;
 	in.load_data(PATH_DATA_DIRECTORY + image_file);
 	in.display();
 	//graph_utils.ImageToGraph2D(&in, &imagen);
 	//cout<<":P"<<endl;
 
-	CSegmentator<CGraphImage2D<int> > seg(&in);
+	CSegmentator<CGraphImage2D > seg(&in);
 	seg.m_segmentation_difference = segmentation_difference;
 	seg.m_nregions_asmv = nmeshes_asmv;
 	seg.m_nregions_asms = nmeshes_asms;
@@ -496,7 +496,7 @@ void do_ag2()
 	imagen.display();
 
 	int nregions =
-		graph_utils.nnon_overlaped_regions<vector< CMeshRegion<CGraphImage2D<int> >* > >(&(seg.m_meshregionV));
+		graph_utils.nnon_overlaped_regions<vector< CMeshRegion<CGraphImage2D >* > >(&(seg.m_meshregionV));
 
 	cout << "# de regiones:" << nregions << endl << endl;
 	cout << "# de regiones a converger asmv:" << nmeshes_asms << endl;
@@ -506,7 +506,7 @@ void do_ag2()
 	app_utils.show_duration();
 
 	nregions =
-		graph_utils.nnon_overlaped_regions<vector< CMeshRegion<CGraphImage2D<int> >* > >(&(seg.m_meshregionV));
+		graph_utils.nnon_overlaped_regions<vector< CMeshRegion<CGraphImage2D >* > >(&(seg.m_meshregionV));
 
 	cout << "# de regiones:" << nregions << endl << endl;
 
@@ -518,13 +518,13 @@ void do_ag2()
 void do_ag3()
 {
 
-	CGraphImage3D<int> in;
+	CGraphImage3D in;
 	cout << "reading image 3d" << endl;
 	app_utils.begin_counter();
 	in.load_data(PATH_DATA_DIRECTORY + image_file);
 	app_utils.show_duration();
 
-	CSegmentator<CGraphImage3D<int> > seg(&in);
+	CSegmentator<CGraphImage3D > seg(&in);
 	seg.m_segmentation_difference = segmentation_difference;
 	seg.m_nregions_asmv = nmeshes_asmv;
 	seg.m_nregions_asms = nmeshes_asms;
@@ -567,10 +567,10 @@ void do_ag3()
 /*void do_bin()
 {
 
-CGraphImage2D<int> in;
+CGraphImage2D in;
 in.load_data(PATH_DATA_DIRECTORY + data_file);
 
-CSegmentator<CGraphImage2D<int> > seg(&in);
+CSegmentator<CGraphImage2D > seg(&in);
 seg.binary_segmentation();
 
 in.display();
