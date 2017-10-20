@@ -1,4 +1,4 @@
-﻿Build started 13/10/2017 16:12:02.
+﻿Build started 18/10/2017 0:43:57.
      1>Project "D:\study\ucsp\seminario-tesis-vs\EstructuraGeneralizada\EstructuraGeneralizada\EstructuraGeneralizada.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Release\\" /Fd"x64\Release\vc140.pdb" /Gd /TP /errorReport:prompt main.cpp
@@ -12,39 +12,39 @@
      1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImage.h(29): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
      1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImage.h(105): warning C4244: '=': conversion from 'double' to 'CImage::IType', possible loss of data
      1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CImage.h(122): warning C4244: '=': conversion from 'double' to 'CImage::IType', possible loss of data
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(148): error C2027: use of undefined type 'CGraphImage3D'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(149): error C2027: use of undefined type 'CGraphImage3D'
          d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(26): note: see declaration of 'CGraphImage3D'
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(148): error C2227: left of '->m_labeled_matriz' must point to class/struct/union/generic type
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(153): error C2027: use of undefined type 'CGraphImage3D'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(149): error C2227: left of '->m_labeled_matriz' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(154): error C2027: use of undefined type 'CGraphImage3D'
          d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(26): note: see declaration of 'CGraphImage3D'
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(153): error C2227: left of '->m_labeled_matriz' must point to class/struct/union/generic type
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(184): error C2027: use of undefined type 'CGraphImage3D'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(154): error C2227: left of '->m_labeled_matriz' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(185): error C2027: use of undefined type 'CGraphImage3D'
          d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(26): note: see declaration of 'CGraphImage3D'
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(184): error C2227: left of '->get_pixel' must point to class/struct/union/generic type
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(189): error C2027: use of undefined type 'CGraphImage3D'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(185): error C2227: left of '->get_pixel' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(190): error C2027: use of undefined type 'CGraphImage3D'
          d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(26): note: see declaration of 'CGraphImage3D'
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(189): error C2227: left of '->m_labeled_matriz' must point to class/struct/union/generic type
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(189): error C2228: left of '.m_area' must have class/struct/union
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(194): error C2027: use of undefined type 'CGraphImage3D'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(190): error C2227: left of '->m_labeled_matriz' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(190): error C2228: left of '.m_area' must have class/struct/union
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(195): error C2027: use of undefined type 'CGraphImage3D'
          d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(26): note: see declaration of 'CGraphImage3D'
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(194): error C2227: left of '->set_pixel' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator3D.h(195): error C2227: left of '->set_pixel' must point to class/struct/union/generic type
      1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphImage3D.h(204): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(149): error C2027: use of undefined type 'CGraphImage2D'
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(25): note: see declaration of 'CGraphImage2D'
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(149): error C2227: left of '->m_labeled_matriz' must point to class/struct/union/generic type
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(155): error C2027: use of undefined type 'CGraphImage2D'
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(25): note: see declaration of 'CGraphImage2D'
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(155): error C2227: left of '->m_labeled_matriz' must point to class/struct/union/generic type
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(186): error C2027: use of undefined type 'CGraphImage2D'
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(25): note: see declaration of 'CGraphImage2D'
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(186): error C2227: left of '->get_pixel' must point to class/struct/union/generic type
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(192): error C2027: use of undefined type 'CGraphImage2D'
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(25): note: see declaration of 'CGraphImage2D'
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(192): error C2227: left of '->m_labeled_matriz' must point to class/struct/union/generic type
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(192): error C2228: left of '.m_area' must have class/struct/union
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(198): error C2027: use of undefined type 'CGraphImage2D'
-         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(25): note: see declaration of 'CGraphImage2D'
-     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(198): error C2227: left of '->set_pixel' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(148): error C2027: use of undefined type 'CGraphImage2D'
+         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(23): note: see declaration of 'CGraphImage2D'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(148): error C2227: left of '->m_labeled_matriz' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(154): error C2027: use of undefined type 'CGraphImage2D'
+         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(23): note: see declaration of 'CGraphImage2D'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(154): error C2227: left of '->m_labeled_matriz' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(185): error C2027: use of undefined type 'CGraphImage2D'
+         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(23): note: see declaration of 'CGraphImage2D'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(185): error C2227: left of '->get_pixel' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(191): error C2027: use of undefined type 'CGraphImage2D'
+         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(23): note: see declaration of 'CGraphImage2D'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(191): error C2227: left of '->m_labeled_matriz' must point to class/struct/union/generic type
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(191): error C2228: left of '.m_area' must have class/struct/union
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(197): error C2027: use of undefined type 'CGraphImage2D'
+         d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(23): note: see declaration of 'CGraphImage2D'
+     1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIterator2D.h(197): error C2227: left of '->set_pixel' must point to class/struct/union/generic type
      1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(107): error C2027: use of undefined type 'CGraphMeshND'
          d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(17): note: see declaration of 'CGraphMeshND'
      1>d:\study\ucsp\seminario-tesis-vs\estructurageneralizada\estructurageneralizada\CGraphIteratorND.h(107): error C2227: left of '->m_nodes' must point to class/struct/union/generic type
@@ -83,4 +83,4 @@
 
 Build FAILED.
 
-Time Elapsed 00:00:01.61
+Time Elapsed 00:00:01.66

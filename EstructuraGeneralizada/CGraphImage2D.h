@@ -9,6 +9,7 @@
 
 #ifndef CGRAPHIMAGE2D_H_INCLUDED
 #define CGRAPHIMAGE2D_H_INCLUDED
+
 #include "CGraph.h"
 #include "CGraphIterator2D.h"
 
@@ -114,99 +115,99 @@ private:
 };
 
 
-CGraphImage2D::CGraphImage2D ():
-m_number_of_neighbors(NUMBER_OF_NEIGHBOURS_2D),
-m_ibegin(new iterator),
-m_iend(new iterator),
-m_rows(0),
-m_cols(0)
+CGraphImage2D::CGraphImage2D() :
+	m_number_of_neighbors(NUMBER_OF_NEIGHBOURS_2D),
+	m_ibegin(new iterator),
+	m_iend(new iterator),
+	m_rows(0),
+	m_cols(0)
 {
 }
 
 
-CGraphImage2D ::~CGraphImage2D ()
+CGraphImage2D ::~CGraphImage2D()
 {
-    //dtor
-    for(int i = 0; i < m_rows; ++i)
-        delete[] m_labeled_matriz[i];
-    delete[] m_labeled_matriz;
+	//dtor
+	for (int i = 0; i < m_rows; ++i)
+		delete[] m_labeled_matriz[i];
+	delete[] m_labeled_matriz;
 }
 
 
-void CGraphImage2D ::config(int _rows, int _cols)
+void CGraphImage2D::config(int _rows, int _cols)
 {
 	m_labeled_matriz = new node*[_rows];
 	for (int i = 0; i < _rows; ++i)
 	{
 		m_labeled_matriz[i] = new node[_cols];
 	}
-    //cout<<"iterators configuration!"<<endl;
-    m_ibegin->m_current_row		= 0;
-    m_ibegin->m_current_column	= 0;
-    m_ibegin->m_total_rows		= m_rows;
-    m_ibegin->m_total_columns	= m_cols;
+	//cout<<"iterators configuration!"<<endl;
+	m_ibegin->m_current_row = 0;
+	m_ibegin->m_current_column = 0;
+	m_ibegin->m_total_rows = m_rows;
+	m_ibegin->m_total_columns = m_cols;
 
 	m_ibegin->m_pgraph = this;
 
-    m_iend->m_current_row		= m_rows;
-    m_iend->m_current_column	= m_cols;  
-	
-    //cout<<"success!"<<endl;
+	m_iend->m_current_row = m_rows;
+	m_iend->m_current_column = m_cols;
+
+	//cout<<"success!"<<endl;
 }
 
 
 CGraphImage2D::iterator* CGraphImage2D::begin()
 {
-    return m_ibegin;
+	return m_ibegin;
 }
 
 
 CGraphImage2D::iterator* CGraphImage2D::end()
 {
-    return m_iend;
+	return m_iend;
 }
 
 
-void CGraphImage2D ::load_data(string filename)
+void CGraphImage2D::load_data(string filename)
 {
 	m_imagen = new CImg<IType>(filename.c_str());
 	m_rows = m_imagen->height();
 	m_cols = m_imagen->width();
 	m_nchannels = (int)(m_imagen->spectrum() == 3);
-	
+
 	config(m_rows, m_cols);
 }
 
 
 int CGraphImage2D::weight()
 {
-    return m_rows*m_cols; //number of elements
+	return m_rows*m_cols; //number of elements
 }
 
 
 int CGraphImage2D::area()
 {
-    return m_rows*m_cols; //number of area in pixels
+	return m_rows*m_cols; //number of area in pixels
 }
 
 
 void CGraphImage2D::operator=(CGraphImage2D  &_graph)
 {
-    config(_graph.m_rows, _graph.m_cols);//config reset/set size of the matrix
-    for(int i=0; i< m_rows; ++i)
-        for(int j=0; j< m_cols; ++j)
-            m_labeled_matriz[i][j] = _graph.m_labeled_matriz[i][j];
+	config(_graph.m_rows, _graph.m_cols);//config reset/set size of the matrix
+	for (int i = 0; i< m_rows; ++i)
+		for (int j = 0; j< m_cols; ++j)
+			m_labeled_matriz[i][j] = _graph.m_labeled_matriz[i][j];
 }
 
 
 void CGraphImage2D::set_at(iterator& iter, NodeType& data)
-{    
-    iter->m_data = data;
+{
+	iter->m_data = data;
 }
 
 
 int CGraphImage2D::get_pixel(int _row, int _col)
-{	
+{
 	int r, g, b;
 	int pixel = 0;
 	r = (int)(*m_imagen)(_col, _row, 0, 0);
@@ -250,5 +251,6 @@ void CGraphImage2D::display()
 {
 	m_imagen->display();
 }
+
 
 #endif // CGRAPHIMAGE2D_H_INCLUDED

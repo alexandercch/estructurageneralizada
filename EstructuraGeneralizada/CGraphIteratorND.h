@@ -77,40 +77,40 @@ CGraphIteratorND::~CGraphIteratorND()
 
 void CGraphIteratorND::operator=(CGraphIteratorND iter)
 {
-    m_pgraph    = iter.m_pgraph;
-    m_index     = iter.m_index;
+	m_pgraph = iter.m_pgraph;
+	m_index = iter.m_index;
 };
 
 void CGraphIteratorND::operator=(CGraphIteratorND *iter)
 {
-    m_pgraph    = iter->m_pgraph;
-    m_index     = iter->m_index;
+	m_pgraph = iter->m_pgraph;
+	m_index = iter->m_index;
 };
 
 bool CGraphIteratorND::operator==(CGraphIteratorND *iter)
 {
-    return m_index == iter->m_index;// && m_pgraph=iter->m_pgraph;
+	return m_index == iter->m_index;// && m_pgraph=iter->m_pgraph;
 };
 
 bool CGraphIteratorND::operator!=(CGraphIteratorND *iter)
 {
-    return m_index != iter->m_index;// || m_pgraph!=iter->m_pgraph;
+	return m_index != iter->m_index;// || m_pgraph!=iter->m_pgraph;
 };
 
 void CGraphIteratorND::operator++(int)
 {
-    m_index++;
+	m_index++;
 };
 
 CGraphIteratorND::node* CGraphIteratorND::operator->()
 {
-    return &m_pgraph->m_nodes[m_index];
+	return &m_pgraph->m_nodes[m_index];
 };
 
 CGraphIteratorND::node*& CGraphIteratorND::operator*()
 {
-    node* p = &m_pgraph->m_nodes[m_index];
-    return p;
+	node* p = &m_pgraph->m_nodes[m_index];
+	return p;
 }
 
 inline int CGraphIteratorND::getData()
@@ -140,16 +140,16 @@ inline void CGraphIteratorND::print()
 
 CGraphIteratorND::node* CGraphIteratorND::neighbor_node_at(int i)
 {
-    ///TODO fix width pointer distance
-    return &m_pgraph->m_nodes[m_pgraph->m_adj_list[m_index][i]];
+	///TODO fix width pointer distance
+	return &m_pgraph->m_nodes[m_pgraph->m_adj_list[m_index][i]];
 };
 
 CGraphIteratorND::self CGraphIteratorND::neighbor_at(int i)
 {
-    self neighbor;
-    neighbor.m_pgraph   = m_pgraph;
-    neighbor.m_index    = m_pgraph->m_adj_list[m_index][i];
-    return neighbor;
+	self neighbor;
+	neighbor.m_pgraph = m_pgraph;
+	neighbor.m_index = m_pgraph->m_adj_list[m_index][i];
+	return neighbor;
 };
 
 #endif // CGRAPHITERATORND_H_INCLUDED

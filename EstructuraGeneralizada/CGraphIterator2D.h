@@ -11,7 +11,6 @@
 #define CGRAPHITERATOR2D_H_INCLUDED
 
 #include "CGraph.h"
-#include "CGraphImage2D.h"
 #include "CGraphIterator.h"
 
 //this arrays are for the navigation through neigbours around a cell
@@ -20,7 +19,6 @@ int col_step2d[4]= { 0, 1, 0,-1};
 
 #define RS2D row_step2d
 #define CS2D col_step2d
-
 
 class CGraphImage2D;
 
@@ -83,6 +81,7 @@ private:
 };
 
 
+
 CGraphIterator2D::CGraphIterator2D()
 {
 };
@@ -95,33 +94,33 @@ CGraphIterator2D::~CGraphIterator2D()
 
 void CGraphIterator2D::operator=(CGraphIterator2D iter)
 {
-    m_total_rows	= iter.m_total_rows;
-    m_total_columns	= iter.m_total_columns;
+	m_total_rows = iter.m_total_rows;
+	m_total_columns = iter.m_total_columns;
 
-    m_current_row	= iter.m_current_row;
-    m_current_column= iter.m_current_column;
+	m_current_row = iter.m_current_row;
+	m_current_column = iter.m_current_column;
 
-    m_prowbegin		= iter.m_current_row;
-	m_pgraph		= iter.m_pgraph;
+	m_prowbegin = iter.m_current_row;
+	m_pgraph = iter.m_pgraph;
 };
 
 
 void CGraphIterator2D::operator=(CGraphIterator2D *iter)
-{	
-    m_total_rows	= iter->m_total_rows;
-    m_total_columns = iter->m_total_columns;
+{
+	m_total_rows = iter->m_total_rows;
+	m_total_columns = iter->m_total_columns;
 
-    m_current_row	= iter->m_current_row;
-    m_current_column= iter->m_current_column;
+	m_current_row = iter->m_current_row;
+	m_current_column = iter->m_current_column;
 
-	m_pgraph		= iter->m_pgraph;
-    m_prowbegin		= iter->m_current_row;	
+	m_pgraph = iter->m_pgraph;
+	m_prowbegin = iter->m_current_row;
 };
 
 
 bool CGraphIterator2D::operator==(CGraphIterator2D *iter)
 {
-    return m_current_row == iter->m_current_row;
+	return m_current_row == iter->m_current_row;
 };
 
 
@@ -134,19 +133,19 @@ bool CGraphIterator2D::operator!=(CGraphIterator2D *iter)
 
 void CGraphIterator2D::operator++(int)
 {
-    //check column counter doesnot exceds the number of columns
-    if( ++m_current_column < m_total_columns){
-        return;//enough for now
-    }//if it exceds go the next row and column equals to zero
-    if (++m_current_row < m_total_rows){
-        m_current_column = 0;
-    }
+	//check column counter doesnot exceds the number of columns
+	if (++m_current_column < m_total_columns) {
+		return;//enough for now
+	}//if it exceds go the next row and column equals to zero
+	if (++m_current_row < m_total_rows) {
+		m_current_column = 0;
+	}
 };
 
 
 CGraphIterator2D::node* CGraphIterator2D::operator->()
 {
-    return &(m_pgraph->m_labeled_matriz[m_current_row][m_current_column]);
+	return &(m_pgraph->m_labeled_matriz[m_current_row][m_current_column]);
 };
 
 
@@ -159,30 +158,30 @@ CGraphIterator2D::node* CGraphIterator2D::operator*()
 /*
 typename CGraphIterator2D::node* CGraphIterator2D::neighbor_node_at(int i)
 {
-    ///TODO fix width pointer distance
-    return (*(m_current_row + RS2D[i]) + CS2D[i]);
+///TODO fix width pointer distance
+return (*(m_current_row + RS2D[i]) + CS2D[i]);
 };
 */
 
 
 CGraphIterator2D::self CGraphIterator2D::neighbor_at(int i)
 {
-    self neighbor;    
+	self neighbor;
 
-    neighbor.m_total_rows		= m_total_rows;
-    neighbor.m_total_columns	= m_total_columns;
+	neighbor.m_total_rows = m_total_rows;
+	neighbor.m_total_columns = m_total_columns;
 
-    neighbor.m_current_row		= m_current_row + RS2D[i];
-    neighbor.m_current_column	= m_current_column + CS2D[i];
+	neighbor.m_current_row = m_current_row + RS2D[i];
+	neighbor.m_current_column = m_current_column + CS2D[i];
 
-	neighbor.m_pgraph			= m_pgraph;
+	neighbor.m_pgraph = m_pgraph;
 
-    return neighbor;
+	return neighbor;
 };
 
 
 int CGraphIterator2D::getData()
-{	
+{
 	return  m_pgraph->get_pixel(m_current_row, m_current_column);
 }
 
@@ -201,7 +200,7 @@ void CGraphIterator2D::setData(int data)
 
 inline bool CGraphIterator2D::isInside()
 {
-	return 0 <= m_current_row && m_current_row < m_total_rows && 0<= m_current_column && m_current_column < m_total_columns;
+	return 0 <= m_current_row && m_current_row < m_total_rows && 0 <= m_current_column && m_current_column < m_total_columns;
 }
 
 

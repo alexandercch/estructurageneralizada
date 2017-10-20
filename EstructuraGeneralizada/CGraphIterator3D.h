@@ -81,6 +81,7 @@ protected:
 private:
 };
 
+
 CGraphIterator3D::CGraphIterator3D()
 {
 };
@@ -91,61 +92,61 @@ CGraphIterator3D::~CGraphIterator3D()
 
 void CGraphIterator3D::operator=(CGraphIterator3D iter)
 {
-	m_total_rows	= iter.m_total_rows;
+	m_total_rows = iter.m_total_rows;
 	m_total_columns = iter.m_total_columns;
-	m_total_layers	= iter.m_total_layers;
+	m_total_layers = iter.m_total_layers;
 
-	m_current_row	= iter.m_current_row;
-	m_current_column= iter.m_current_column;
+	m_current_row = iter.m_current_row;
+	m_current_column = iter.m_current_column;
 	m_current_layer = iter.m_current_layer;
 
-	m_prowbegin		= iter.m_current_row;
-	m_pgraph		= iter.m_pgraph;
+	m_prowbegin = iter.m_current_row;
+	m_pgraph = iter.m_pgraph;
 };
 
 void CGraphIterator3D::operator=(CGraphIterator3D *iter)
 {
-	m_total_rows	= iter->m_total_rows;
+	m_total_rows = iter->m_total_rows;
 	m_total_columns = iter->m_total_columns;
-	m_total_layers	= iter->m_total_layers;
+	m_total_layers = iter->m_total_layers;
 
-	m_current_row	= iter->m_current_row;
-	m_current_column= iter->m_current_column;
+	m_current_row = iter->m_current_row;
+	m_current_column = iter->m_current_column;
 	m_current_layer = iter->m_current_layer;
 
-	m_prowbegin		= iter->m_current_row;
-	m_pgraph		= iter->m_pgraph;
+	m_prowbegin = iter->m_current_row;
+	m_pgraph = iter->m_pgraph;
 };
 
 bool CGraphIterator3D::operator==(CGraphIterator3D *iter)
 {
-    return m_current_row == iter->m_current_row;// && m_pcol==iter->m_pcol;
+	return m_current_row == iter->m_current_row;// && m_pcol==iter->m_pcol;
 };
 
 bool CGraphIterator3D::operator!=(CGraphIterator3D *iter)
 {
-    return !(m_current_row == iter->m_current_row);// && m_pcol==iter->m_pcol);
+	return !(m_current_row == iter->m_current_row);// && m_pcol==iter->m_pcol);
 };
 
 void CGraphIterator3D::operator++(int)
-{    
-    //detect if current layer is in the final layer
-    if( ++m_current_layer < m_total_layers)
-        return;//if not go to next layer
-    if( ++m_current_column < m_total_columns){
-        m_current_layer = 0;//cout<<"*";
-        return;//if not go to next column
-    }//if it is go the next row and column to the initial column
-    if (++m_current_row < m_total_rows){
-        m_current_column = 0;
-        m_current_layer = 0;        
-    }
+{
+	//detect if current layer is in the final layer
+	if (++m_current_layer < m_total_layers)
+		return;//if not go to next layer
+	if (++m_current_column < m_total_columns) {
+		m_current_layer = 0;//cout<<"*";
+		return;//if not go to next column
+	}//if it is go the next row and column to the initial column
+	if (++m_current_row < m_total_rows) {
+		m_current_column = 0;
+		m_current_layer = 0;
+	}
 };
 
 
 CGraphIterator3D::node* CGraphIterator3D::operator->()
 {
-    return &(m_pgraph->m_labeled_matriz[m_current_row][m_current_column][m_current_layer]);
+	return &(m_pgraph->m_labeled_matriz[m_current_row][m_current_column][m_current_layer]);
 };
 
 CGraphIterator3D::node* CGraphIterator3D::operator*()
@@ -157,21 +158,21 @@ CGraphIterator3D::node* CGraphIterator3D::operator*()
 /*
 typename CGraphIterator3D::node* CGraphIterator3D::neighbor_node_at(int i)
 {
-    
-    return &((m_current_row + RS3D[i]) + CS3D[i]);
+
+return &((m_current_row + RS3D[i]) + CS3D[i]);
 };*/
 
 CGraphIterator3D::self CGraphIterator3D::neighbor_at(int i)
 {
-    self neighbor;
+	self neighbor;
 
-	neighbor.m_total_rows	= m_total_rows;
-	neighbor.m_total_columns= m_total_columns;
+	neighbor.m_total_rows = m_total_rows;
+	neighbor.m_total_columns = m_total_columns;
 	neighbor.m_total_layers = m_total_layers;
 
-	neighbor.m_current_row		= m_current_row + RS3D[i];
-	neighbor.m_current_column	= m_current_column + CS3D[i];
-	neighbor.m_current_layer	= m_current_layer + LS3D[i];
+	neighbor.m_current_row = m_current_row + RS3D[i];
+	neighbor.m_current_column = m_current_column + CS3D[i];
+	neighbor.m_current_layer = m_current_layer + LS3D[i];
 
 	neighbor.m_pgraph = m_pgraph;
 
@@ -197,14 +198,16 @@ inline void CGraphIterator3D::setData(int data)
 inline bool CGraphIterator3D::isInside()
 {
 	return	0 <= m_current_row && m_current_row < m_total_rows &&
-			0 <= m_current_column && m_current_column < m_total_columns &&
-			0 <= m_current_layer && m_current_layer < m_total_layers;
+		0 <= m_current_column && m_current_column < m_total_columns &&
+		0 <= m_current_layer && m_current_layer < m_total_layers;
 }
 
 inline void CGraphIterator3D::print()
 {
-	cout	<< m_current_row << " " << m_current_column << " " << m_current_layer << " - "
-			<< m_total_rows << " " << m_total_columns << " " << m_total_layers << endl;
+	cout << m_current_row << " " << m_current_column << " " << m_current_layer << " - "
+		<< m_total_rows << " " << m_total_columns << " " << m_total_layers << endl;
 }
+
+
 
 #endif // CGRAPHITERATOR3D_H

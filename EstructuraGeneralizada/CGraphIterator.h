@@ -16,11 +16,11 @@ public:
     virtual ~CGraphIterator();
 
     //overloaded operators
-    void operator=(CGraphIterator *iter);
-    void operator=(CGraphIterator iter);
-    bool operator==(CGraphIterator *iter);
-    bool operator!=(CGraphIterator *iter);
-    void operator++(int);
+	void operator=(CGraphIterator *iter) {};
+	void operator=(CGraphIterator iter) {};
+	bool operator==(CGraphIterator *iter) {};
+	bool operator!=(CGraphIterator *iter) {};
+	void operator++(int) {};
 };
 
 CGraphIterator::CGraphIterator()
